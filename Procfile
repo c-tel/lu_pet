@@ -1,0 +1,1 @@
+web: gunicorn lu_pet.wsgi
