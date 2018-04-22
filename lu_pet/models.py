@@ -50,7 +50,7 @@ class Advertisement(models.Model):
         (OTHER, 'Other')
     )
     lost = models.BooleanField()
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     pet = models.SmallIntegerField(choices=PET_CHOICES, default=OTHER)
     title = models.CharField(max_length=64)
     text = models.CharField(max_length=500)
@@ -70,8 +70,8 @@ class Advertisement(models.Model):
 
 
 class Feedback(models.Model):
-    author = models.ForeignKey(User)
-    adv = models.ForeignKey(Advertisement)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    adv = models.ForeignKey(Advertisement, on_delete=models.CASCADE)
     text = models.CharField(max_length=256)
     contacts = models.CharField(max_length=128)
 
