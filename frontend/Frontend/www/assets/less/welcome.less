@@ -8,6 +8,7 @@
   background: #dce2f2;
   min-height: 100vh;
   .form-container{
+    min-width: 380px;
     margin: 30px;
     padding: 12px;
     text-align: center;
@@ -25,11 +26,12 @@
         width: 100%;
         margin-bottom: 30px;
         border-bottom: 3px solid transparent;
-        -moz-border-image: -moz-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
-        -webkit-border-image: -webkit-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
-        border-image: linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+        -moz-border-image: -moz-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffabab 100%);
+        -webkit-border-image: -webkit-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffabab 100%);
+        border-image: linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffabab 100%);
         border-image-slice: 1;
         input{
+          padding: 0 5px!important;
           box-shadow: none;
           -moz-box-shadow: none;
           -o-box-shadow: none;
@@ -67,6 +69,51 @@
           transition: all 0.4s;
         }
       }
+      #email-dispatch {
+        margin-bottom: 20px;
+        position: relative;
+        cursor: pointer;
+        font-size: 17px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+        }
+        .checkmark {
+          position: absolute;
+          top: 3px;
+          left: 85px;
+          height: 17px;
+          width: 17px;
+          background-color: #ecdcdc;
+        }
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+        input:checked ~ .checkmark:after {
+          display: block;
+        }
+        .checkmark:after {
+          left: 6px;
+          bottom: 5px;
+          width: 5px;
+          height: 10px;
+          border: solid #3B41C5;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+      #email-dispatch:hover input ~ .checkmark{
+        background-color: #ccc;
+      }
     }
     .butt {
       color: white;
@@ -77,17 +124,17 @@
         outline: none !important;
         border-radius: 8px;
         background: #a981bb;
-        background: linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
-        background: -o-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
-        background: -moz-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
-        background: -webkit-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
+        background: linear-gradient(to left, #3b41c5, #a981bb, #ffabab);
+        background: -o-linear-gradient(to left, #3b41c5, #a981bb, #ffabab);
+        background: -moz-linear-gradient(to left, #3b41c5, #a981bb, #ffabab);
+        background: -webkit-linear-gradient(to left, #3b41c5, #a981bb, #ffabab);
       }
       button:hover{
         color: white;
-        background: linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
-        background: -o-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
-        background: -moz-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
-        background: -webkit-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
+        background: linear-gradient(to right, #3b41c5, #a981bb, #ffabab);
+        background: -o-linear-gradient(to right, #3b41c5, #a981bb, #ffabab);
+        background: -moz-linear-gradient(to right, #3b41c5, #a981bb, #ffabab);
+        background: -webkit-linear-gradient(to right, #3b41c5, #a981bb, #ffabab);
       }
       }
     }
