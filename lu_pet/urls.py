@@ -19,7 +19,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     url('^home$', main),
-    url('^welcome$', welcome),
-    url('^login$', sign_in),
-    url('^signup$', sign_up),
+    url('^welcome/$', welcome),
+    url('^login/$', sign_in),
+    url('^signup/$', sign_up),
 ]
