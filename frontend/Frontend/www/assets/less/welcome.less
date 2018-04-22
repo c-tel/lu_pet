@@ -1,0 +1,245 @@
+.container-fluid{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #dce2f2;
+  min-height: 100vh;
+  .form-container{
+    margin: 30px;
+    padding: 12px;
+    text-align: center;
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    .login-form{
+      .title{
+        font-weight: 600;
+      }
+      .validate{
+        position: relative;
+        text-align: left;
+        width: 100%;
+        margin-bottom: 30px;
+        border-bottom: 3px solid transparent;
+        -moz-border-image: -moz-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+        -webkit-border-image: -webkit-linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+        border-image: linear-gradient(left, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+        border-image-slice: 1;
+        input{
+          box-shadow: none;
+          -moz-box-shadow: none;
+          -o-box-shadow: none;
+          -webkit-box-shadow: none;
+          width: 100%;
+          height: 45px;
+          border: none;
+          outline: none;
+          line-height: 1.2;
+          display: block;
+        }
+        .input-on-focus{
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+          position: absolute;
+          display: block;
+        }
+        .input-on-focus::after {
+          font-size: 15px;
+          color: #999999;
+          line-height: 1.2;
+          content: attr(data-placeholder);
+          display: block;
+          width: 100%;
+          position: absolute;
+          top: 16px;
+          left: 0;
+          padding-left: 5px;
+          -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+          -moz-transition: all 0.4s;
+          transition: all 0.4s;
+        }
+      }
+    }
+    .butt {
+      color: white;
+      button {
+        z-index: 100;
+        font-weight: 400 !important;
+        border: none;
+        outline: none !important;
+        border-radius: 8px;
+        background: #a981bb;
+        background: linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
+        background: -o-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
+        background: -moz-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
+        background: -webkit-linear-gradient(to left, #3b41c5, #a981bb, #ffc8a9);
+      }
+      button:hover{
+        color: white;
+        background: linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
+        background: -o-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
+        background: -moz-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
+        background: -webkit-linear-gradient(to right, #3b41c5, #a981bb, #ffc8a9);
+      }
+      }
+    }
+  }
+
+//@footer-height: 45px;
+//
+//.container {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  padding: 0;
+//  width: 100%;
+//  height: 100%;
+//
+//  .navbar {
+//    margin: 0;
+//    background-color: #341509;
+//    border: 0;
+//    .navbar-brand {
+//      opacity: 1;
+//      padding: 0;
+//    }
+//    .top-learn {
+//      display: none;
+//    }
+//  }
+//  .panel-default {
+//    overflow-y: auto;
+//    margin: 0!important;
+//    border: 0;
+//    height: 100%;
+//
+//    .panel-body:before {
+//      content: '';
+//      display: inline-block;
+//      height: 100%;
+//      vertical-align: middle;
+//    }
+//
+//    .panel-body {
+//      position: fixed;
+//      top: 0;
+//      left: 0;
+//      bottom: @footer-height;
+//      width: 100%;
+//      margin: 0;
+//      background-color: #dbfff4;
+//
+//      .row{
+//        width: 100%;
+//        vertical-align: middle;
+//        display: inline-block;
+//
+//        .lets-learn {
+//          letter-spacing: 1px;
+//          word-spacing: 5px;
+//          font-family: 'Sofia', cursive;
+//          color: #ff6a46;
+//          -ms-transform: rotate(-20deg); /* IE 9 */
+//          -webkit-transform: rotate(-20deg); /* Safari */
+//          transform: rotate(-20deg);
+//        }
+//        .card-container {
+//          position: relative;
+//          -webkit-perspective: 800px;
+//          perspective: 800px;
+//
+//          #card {
+//            position: relative;
+//            -webkit-transition: -webkit-transform 1s;
+//            transition: transform 0.5s;
+//            -webkit-transform-style: preserve-3d;
+//            transform-style: preserve-3d;
+//            #welcome {
+//              font-family: 'Berkshire Swash', cursive;
+//              color: #ff6a46;
+//            }
+//            figure {
+//              display: block;
+//              top: 0;
+//              left: 0;
+//              width: 100%;
+//              height: 100%;
+//              -webkit-backface-visibility: hidden;
+//              backface-visibility: hidden;
+//
+//              .sign-in{
+//                background-color: #B84014;
+//                color: white;
+//              }
+//              .fliper-btn {
+//                color: #448D76;
+//              }
+//            }
+//            .back {
+//              -webkit-transform: rotateY(180deg);
+//              transform: rotateY(180deg);
+//              #signUp {
+//                background-color: #B84014;
+//                color: white;
+//              }
+//              .input-group-addon {
+//                .fa {
+//                  width: 18px;
+//                }
+//              }
+//            }
+//          }
+//        }
+//      }
+//    }
+//
+//    .panel-footer {
+//      position: absolute;
+//      bottom: 0;
+//      left: 0;
+//      right: 0;
+//      height: @footer-height;
+//      border-radius: 0;
+//      margin: 0;
+//      background-color: #341509;
+//      color: white;
+//      text-align: center;
+//        font-size: 15px;
+//    }
+//  }
+//
+//  #card.flipped {
+//    -webkit-transform: rotateY(180deg);
+//    transform: rotateY(180deg);
+//  }
+//}
+//
+//@media screen and (max-width: 768px) {
+//  .lets-learn {
+//    font-size: 26px;
+//  }
+//}
+//
+//@media screen and (max-width: 767px) {
+//  .lets-learn {
+//    display: none;
+//  }
+//  .panel-footer {
+//    font-size: 12px!important;
+//  }
+//  .top-learn {
+//    padding-top: 5px;
+//    padding-left: 15px;
+//    color: #D4F7EC;
+//    display: block!important;
+//    text-align: center;
+//  }
+//}

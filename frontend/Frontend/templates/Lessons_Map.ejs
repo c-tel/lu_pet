@@ -1,0 +1,45 @@
+<div id="lessons">
+    <header id="header-title"><h1 class="brown text-center"><%= title%></h1><span id="hello">Привіт, <%=username%> :)</span></header>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-8 col-sm-offset-7 col-sm-5"><h6 id="rules-title">Щоб відкрити уроки із замочком,<br>пройдіть попередні.</h6></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
+            <div class="tab-content">
+                <ul class="nav nav-pills nav-justified">
+                    <li class="active"><a data-toggle="pill" href="#materials">Матеріали</a></li>
+                    <li><a data-toggle="pill" href="#tests">Тести</a></li>
+                </ul>
+                <div id="materials" class="tab-pane fade in active">
+                    <div id="table-content" style="font-size: 17px">
+                        <table class="table">
+                            <tbody>
+                            <%for(var i = 0; i< lessons.length; i++) {%>
+                            <tr>
+                                <td><img class="lesson-img" id="<%=lessons[i].id%>img" src="<%= lessons[i].img_src%>"></td>
+                                <td class="l click-td" id="<%= lessons[i].id%>"><%= lessons[i].title%></td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="tests" class="tab-pane fade">
+                    <div id="table-content" style="font-size: 17px">
+                        <table class="table">
+                            <tbody>
+                            <%for(var k = 1; k <= level; k++) {%>
+                            <tr>
+                                <td class="t gramm click-td" id="<%=k%>"><%=tests[k-1].title%></td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger"><strong>Увага!</strong>У вас немає вивчених слів!</div>
+    <footer id="brain-storm">Brainstorm</footer>
+</div>
