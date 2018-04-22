@@ -9,6 +9,10 @@ def main(request):
     return render(request, 'index.html')
 
 
+def welcome(request):
+    return render(request, 'welcome.html')
+
+
 def sign_up(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
