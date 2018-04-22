@@ -13,6 +13,7 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 
+@csrf_exempt
 def sign_up(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
@@ -28,6 +29,7 @@ def sign_up(request):
         return response
 
 
+@csrf_exempt
 def sign_in(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
@@ -45,11 +47,13 @@ def sign_in(request):
         return response
 
 
+@csrf_exempt
 def sign_out(request):
     User.sign_out(request.session)
     return JsonResponse({'status': 'ok'})
 
 
+@csrf_exempt
 def post_advertisement(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
