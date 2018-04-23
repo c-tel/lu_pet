@@ -7,8 +7,6 @@ class AuthMiddleware:
 
     def __call__(self, request):
         key = request.COOKIES.get('sessid', None)
-        user = sessions.get(key, None)
-        request.user = user
         request.session = key
         response = self.get_response(request)
         return response

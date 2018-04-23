@@ -23,4 +23,5 @@ urlpatterns = [
     url('^welcome/$', welcome),
     url('^login/$', sign_in),
     url('^signup/$', sign_up),
+    url('^logout/$', sign_out),
 ]

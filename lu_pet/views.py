@@ -15,7 +15,9 @@ def main(request):
 
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    if request.session is None:
+        return render(request, 'welcome.html')
+    return HttpResponseRedirect('/home')
 
 
 # API
@@ -44,11 +46,15 @@ def sign_in(request):
         sessid = User.sign_in(username, password)
         signed = sessid is not None
         res = {
-            'status': ('ok' if signed else 'error'),
+            'status': ('error' if signed else 'error'),
         }
         response = JsonResponse(res)
+        print('here')
         if signed:
+            if request.session:
+                response.delete_cookie('sessid')
             response.set_cookie('sessid', sessid)
+            print('cookie')
         return response
 
 

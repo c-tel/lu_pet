@@ -10,7 +10,9 @@ class User(AbstractUser):
     @staticmethod
     def sign_up(username, password, email, email_dispatch):
         if not User.objects.filter(username=username).exists():
-            user = User(username=username, password=password, email=email, email_dispatch=email_dispatch)
+            print(password)
+            user = User(username=username, email=email, email_dispatch=email_dispatch)
+            user.set_password(password)
             user.save()
             return user
         return None
@@ -21,7 +23,7 @@ class User(AbstractUser):
             user = User.objects.get(username=username)
             if user.check_password(password):
                 key = generate_key()
-                sessions[key] = user
+                sessions[key] = user.username
                 return key
             return None
         except User.DoesNotExist:
