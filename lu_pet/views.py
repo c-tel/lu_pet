@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponsePermanentRedirect
+from django.shortcuts import render, HttpResponsePermanentRedirect, HttpResponseRedirect
 import json
 from lu_pet.models import User, Advertisement
 from django.http import JsonResponse
@@ -30,7 +30,7 @@ def sign_up(request):
         if not User.sign_up(username, password, email, email_dispatch):
             return JsonResponse({'status': 'error'})
         key = User.sign_in(username, password)
-        response = JsonResponse({'status': 'ok'})
+        response = HttpResponseRedirect('/home')
         response.set_cookie('sessid', key)
         return response
 
