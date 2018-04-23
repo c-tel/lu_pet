@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # pages
 def default(request):
-    return HttpResponsePermanentRedirect('/home', {'username': request.user.username})
+    return HttpResponsePermanentRedirect('/home')
 
 
 def main(request):
@@ -17,7 +17,8 @@ def main(request):
 def welcome(request):
     if request.user is None:
         return render(request, 'welcome.html')
-    return HttpResponseRedirect('/home')
+    username = request.user.username if request.user else 'user'
+    return HttpResponseRedirect('/home', {'username': username})
 
 
 # API
