@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponsePermanentRedirect, HttpResponseRedirect
 import json
-from lu_pet.models import User, Advertisement
+from lu_pet.models import *
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -15,24 +15,25 @@ def main(request):
 
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    if request.user is None:
+        return render(request, 'welcome.html')
+    return HttpResponseRedirect('/home')
 
 
 # API
 @csrf_exempt
 def sign_up(request):
     if request.method == 'POST':
-        data = json.loads(request.body.decode('utf-8'))
-        username = data['username']
-        password = data['password']
-        email_dispatch = data['email_dispatch']
-        email = data['email']
-        if not User.sign_up(username, password, email, email_dispatch):
-            return JsonResponse({'status': 'error'})
-        key = User.sign_in(username, password)
-        response = JsonResponse({'status': 'ok'})
-        response.set_cookie('sessid', key)
-        return response
+        dict = json.loads(request.body.decode('utf-8'))
+        username = dict['username']
+        password = dict['password']
+        if not User.objects.filter(username=username).exists():
+            add_user(username, password)
+            key = Session.objects.authentificate(username, password)
+            response = JsonResponse({'status': 'ok'})
+            response.set_cookie('sessid', key)
+            return response
+        return JsonResponse({'status': 'error'})
 
 
 @csrf_exempt
@@ -41,20 +42,18 @@ def sign_in(request):
         data = json.loads(request.body.decode('utf-8'))
         username = data['username']
         password = data['password']
-        sessid = User.sign_in(username, password)
-        signed = sessid is not None
-        res = {
-            'status': ('ok' if signed else 'error'),
-        }
-        response = JsonResponse(res)
-        if signed:
+        sessid = Session.objects.authentificate(username, password)
+        if sessid:
+            response = JsonResponse({'status': 'ok'})
             response.set_cookie('sessid', sessid)
-        return response
+            print('hjkl')
+            return response
+    return JsonResponse({'status': 'error'})
 
 
 @csrf_exempt
 def sign_out(request):
-    User.sign_out(request.session)
+    Session.objects.exit(request.session)
     return JsonResponse({'status': 'ok'})
 
 
