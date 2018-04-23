@@ -10,6 +10,7 @@ class SessionManager(models.Manager):
         if User.objects.filter(username=username).exists():
             user = User.objects.get(username=username)
             if user.check_password(password):
+                print('checked')
                 session = Session()
                 session.user = user
                 session.key = "".join(random.choice(string.ascii_letters) for _ in range(64))

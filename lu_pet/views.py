@@ -46,6 +46,7 @@ def sign_in(request):
         if sessid:
             response = JsonResponse({'status': 'ok'})
             response.set_cookie('sessid', sessid)
+            print('hjkl')
             return response
     return JsonResponse({'status': 'error'})
 
