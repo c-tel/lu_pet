@@ -16,14 +16,12 @@ $(function() {
            window.location.href='/home';
        })
     });
-    $('#info_trigger').on('click', function () {
-        API.backendPost('/api/day/', {}, function (err, data) {
-            var code = Templates.Info({count: data.count});
-            $('#modal_window').append(code);
-            $('#close').click(function () {
-                $('#modal_window').html('');
-            });
-        });
+    $('#myModal').click(function () {
+
+            // $('#modal_window').append(code);
+            // $('#close').click(function () {
+            //     $('#modal_window').html('');
+            // });
     });
     // $('#drop').on('click', function () {
     //     API.backendPost('/api/drop/', {}, function (err, data) {

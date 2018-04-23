@@ -10,8 +10,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"  rel="stylesheet">
 
     <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!-- my LESS -->
     <link rel="stylesheet/less" type="text/css" href="/static/home.less" />
     <!--<link rel="stylesheet/less" type="text/css" href="./assets/less/home.less" />-->
@@ -23,7 +23,8 @@
 
 <div class="container-fluid">
     <header>
-        <div class="logo">LoGaw</div>
+        <div class="logo">LoGaw
+		<h5 style="color: white">Hello {{username}}</h5></div>
     </header>
     <nav id="side-menu" class="menu">
         <ul data-menu="main" class="menu__level menu-curr">
@@ -35,54 +36,83 @@
             <li class="menu__item" id="exit"><a class="menu__link" href="#">Вихід</a></li>
         </ul>
     </nav>
+
+	<button id="butt-advertisement" data-toggle="modal" data-target="#myModal">Оголошення</button>
     <div class="content">
 		<div class="row">
 			<div class=" col-md-6 col-lg-4">
-				<div class="pet-card">
-					<img class="ph-pet" src="/static/Lapy.png" alt="Your Pet">
-					<div class="info-pet">
-						<h3 class="pet-name">Bobik</h3>
-						<div class="about">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</div>
+				<div class="card bg-light text-dark">
+					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
+					<div class="card-body">
+						<h4 class="card-title">Bobik</h4>
+						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
+						<a href="#" class="btn btn-primary">Відгукнутися</a>
 					</div>
 				</div>
 			</div>
 			<div class=" col-md-6 col-lg-4">
-				<div class="pet-card">
-					<img class="ph-pet" src="/static/Lapy.png" alt="Your Pet">
-					<div class="info-pet">
-						<h3 class="pet-name">Bobik</h3>
-						<div class="about">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</div>
+				<div class="card bg-light text-dark">
+					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
+					<div class="card-body">
+						<h4 class="card-title">Bobik</h4>
+						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
+						<a href="#" class="btn btn-primary">Відгукнутися</a>
 					</div>
 				</div>
 			</div>
 			<div class=" col-md-6 col-lg-4">
-				<div class="pet-card">
-					<img class="ph-pet" src="/static/Lapy.png" alt="Your Pet">
-					<div class="info-pet">
-						<h3 class="pet-name">Bobik</h3>
-						<div class="about">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</div>
+				<div class="card bg-light text-dark">
+					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
+					<div class="card-body">
+						<h4 class="card-title">Bobik</h4>
+						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
+						<a href="#" class="btn btn-primary">Відгукнутися</a>
 					</div>
 				</div>
 			</div>
 			<div class=" col-md-6 col-lg-4">
-				<div class="pet-card">
-					<img class="ph-pet" src="/static/Lapy.png" alt="Your Pet">
-					<div class="info-pet">
-						<h3 class="pet-name">Bobik</h3>
-						<div class="about">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</div>
+				<div class="card bg-light text-dark">
+					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
+					<div class="card-body">
+						<h4 class="card-title">Bobik</h4>
+						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
+						<a href="#" class="btn">Відгукнутися</a>
 					</div>
 				</div>
 			</div>
 		</div>
     </div>
 </div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Modal Heading</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body">
+				Modal body..
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!--jQuery-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <!--bootstrap-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script type = "text/javascript"
         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
 </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <!--my js-->
 <script type="text/javascript" src="/static/index.js?11"> </script>
 <!--<script type="text/javascript" src="../../index.js"> </script>-->
