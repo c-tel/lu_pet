@@ -58,7 +58,7 @@ $(function() {
 
     $('#exit').on('click',function () {
        API.backendPost('/logout/', null,function () {
-           window.location.href='/welcome';
+           window.location.href='/home';
        })
     });
     $('#info_trigger').on('click', function () {
