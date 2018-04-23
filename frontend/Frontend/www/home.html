@@ -9,55 +9,38 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"  rel="stylesheet">
 
-    <link rel="shortcut icon" type="image/x-icon" href="/static/Poland.ico"/>
-
     <!-- Bootsrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!-- my LESS -->
-    <link rel="stylesheet/less" type="text/css" href="/static/home.less?116" />
+    <link rel="stylesheet/less" type="text/css" href="/static/home.less" />
+    <!--<link rel="stylesheet/less" type="text/css" href="./assets/less/home.less" />-->
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
-    <title>MyPolish</title>
+    <title>Lu, Pet</title>
 </head>
 <body>
 
-<div class="content">
-    <!--vertical menu-->
-    <nav class="vertical-menu blue" id="mySidebar" style="display: none">
-        <div class="logo-container">
-            <img class="logo" src="/static/Project-Drawing-orange.png">
-            <i onclick="closeMenu()" class="fa fa-remove fa-2x" style="float: right; visibility: hidden"></i>
-        </div>
-        <div class="menu">
-            <a href="#" class="active">Уроки</a>
-            <a href="#" id="info_trigger">Активність</a>
-            <a href="#" id="drop">Скинути прогрес</a>
-            <a href="#" id="exit">Вийти</a>
-        </div>
-    </nav>
-    <!--small top menu-->
-    <header class="top-menu">
-        <span class="logo-container">
-            <img class="logo" src="/static/Project-Drawing-orange.png">
-        </span>
-        <a href="javascript:void(0)" class="bar-button" onclick="openMenu()"><i class="fa fa-bars fa-2x"></i></a>
+<div class="container-fluid">
+    <header>
+        <div class="logo">Logo</div>
     </header>
-    <script>
-        function openMenu() {
-            $('#mySidebar').css('display', 'block');
-            $('.fa-remove').css('visibility', 'visible');
-        }
-        function closeMenu() {
-            $('#mySidebar').css('display', 'none');
-        }
-    </script>
-
-    <!--main-->
-    <div class="main-container">
+    <nav id="side-menu" class="menu">
+        <ul data-menu="main" class="menu__level menu-curr">
+            <li class="menu__item"><a class="menu__link" data-submenu="submenu-1" href="#">Пошук тварин</a></li>
+            <li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Добрі руки</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">Контакти</a></li>
+            <li class="menu__item" id="profile"><a class="menu__link" href="#">Особистий кабінет</a></li>
+        </ul>
+        <!-- Submenu 1 -->
+        <!-- <ul data-menu="submenu-1" class="menu__level">
+			<li class="menu__item"><a class="menu__link" href="#">Загублені</a></li>
+			<li class="menu__item"><a class="menu__link" href="#">Знайдені</a></li>
+		</ul>-->
+    </nav>
+    <div class="content">
         <div id="template"></div>
     </div>
-    <div id="modal_window"></div>
 </div>
 <!--jQuery-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -67,6 +50,7 @@
         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
 </script>
 <!--my js-->
-<script type="text/javascript" src="/static/index.js?147"> </script>
+<script type="text/javascript" src="/static/index.js?11"> </script>
+<!--<script type="text/javascript" src="../../index.js"> </script>-->
 </body>
 </html>

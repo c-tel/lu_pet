@@ -1,208 +1,265 @@
-@import "grammar";
-@import "dictionary";
-@import "tests";
-@import "day";
-@menu-width: 160px;
+@menu-width: 200px;
 
-body {
-  margin: auto;
-  max-width: 1520px;
-  background-color: #dbfff4;
-  .alert {
-    font-size: 15px;
-    display: none;
-    text-align: center;
+.container-fluid{
+  padding: 0!important;
+  .logo{
     position: fixed;
-    bottom: 60px;
-    left: 170px;
-  }
-  #hello {
-    font-family: 'Comfortaa', cursive;
-    z-index: 14;
-    color: #F0F7D4;
-    font-size: 19px;
-    position: absolute;
-    top: 15px;
-    right: 30px;
-  }
-  #brain-storm {
-    width: 100%;
-    max-width: 1360px;
-    font-size: 26px;
-    padding-top: 10px;
-    font-family: 'Comfortaa', cursive;
-    color: #F0F7D4;
-    background-color: #341509;
+    top: 0;
+    left: 0;
+    width: @menu-width;
+    height: 120px;
+    padding: 1em 0 0 0;
     text-align: center;
+    color: #5d8e59;
+    background: #1c1d22;
+  }
+  nav {
+    z-index: 20;
     position: fixed;
-    height: 60px;
-    bottom: 0;
-    cursor: pointer;
-  }
-  #brain-storm:hover {
-    background-color: #FC7307;
-  }
-  .content {
-    .vertical-menu {
-      z-index: 45;
-      position: fixed;
+    top: 120px;
+    left: 0;
+    width: @menu-width;
+    height: 100%;
+    background-color: #1c1d22;
+    .menu-curr {
+      visibility: visible;
+    }
+    .menu__level {
+      position: absolute;
       top: 0;
-      height: 100%;
-      overflow: auto;
-      width: @menu-width;
-      .logo-container {
-        display: block;
-        .logo {
-          width: 42%;
-        }
-      }
-      .menu {
-        a {
-          font-size: 17px;
-          color: #F0F7D4;
-          display: block;
-          padding: 12px;
-          text-decoration: none;
-        }
-
-        a:hover {
-          background-color: #FC7307;
-        }
-
-        a.active {
-          background-color: #F0F7D4;
-          color: #347B98;
-        }
-      }
-    }
-
-    .top-menu {
-      z-index: 40;
-      position: fixed;
+      left: 0;
+      overflow: hidden;
       width: 100%;
-      height: 59px;
-      background-color: #341509;
-      padding-right: 15px;
-      .logo-container {
-        float: left;
-        width: 60px;
-        .logo {
-          width: 100%;
-        }
-      }
-      .bar-button {
-        padding-top: 12px;
-        float: right;
-        .fa-bars {
-          color: #448D76;
-        }
-      }
-    }
-
-    .main-container{
-      position: relative;
       height: 100%;
-      margin-left: @menu-width;
-      header {
-        h1 {
-          margin-top: 0;
-          padding: 10px 0;
-          font-family: 'Comfortaa', cursive;
-        }
+      margin: 0;
+      padding: 0;
+      .menu__item {
+        display: block;
       }
-      .back-to-map {
-        margin-top: 30px;
-        color: #347B98;
-      }
-      #lessons {
-        .row {
-          margin-right: 0!important;
-          margin-left: 0!important;
-          #rules-title {
-            font-weight: bold;
-            font-family: 'Comfortaa', cursive;
-            color: #ff6a46;
-          }
-        }
-        .nav-pills>li.active>a, .nav-pills>li.active>a:focus {
-          background-color: #341509!important;
-          color: #F0F7D4!important;
-        }
-        .nav-pills>li>a:hover {
-          background-color: #FC7307!important;
-          color: #F0F7D4!important;
-        }
-        .nav-pills>li>a {
-          font-size: 18px;
-          color: #347B98!important;
-        }
-        .row {
-          margin-top: 30px;
-          .tab-content {
-            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
-            td {
-              background-color: #D4E4F7;
-              color: #347B98;
-            }
-            .click-td:hover {
-              background-color: #FC7307;
-              color: #D4E4F7;
-            }
-          }
-        }
+      .menu__link {
+        font-weight: 600;
+        position: relative;
+        display: block;
+        padding: 1em;
+        color: #bdbdbd;
+        -webkit-transition: color 0.1s;
+        transition: color 0.1s;
       }
     }
   }
-}
-.blue {
-  background-color: #347B98;
-  color: white;
-}
-.brown {
-  background-color: #341509;
-  color: #D4E4F7;
-}
 
-@media (min-width: 767px) {
-  .top-menu {
-    display: none !important;
-  }
-  #mySidebar {
-    display: block!important;
-  }
-  .fa-remove {
-    visibility: hidden!important;
-  }
-}
-@media (max-width: 767px) {
-  .main-container {
-    margin-left: 0 !important;
-  }
-    #brain-storm {
-      left: 0!important;
-  }
-  #infograph{
-    left: 0!important;
-  }
-  .alert {
-    left: 10px!important;
-  }
-}
-tr {
-  text-align: center;
-  td {
-    vertical-align: middle!important;
-  }
-  .lesson-img{
-    width: 40px;
-  }
-  .click-td {
-    cursor: pointer;
+  .content{
+    position: relative;
+    min-height: 300px;
+    margin-left: @menu-width;
   }
 }
 
-tr:hover {
-  background-color: #ff6a46;
-  color: white;
-
-}
+//@import "grammar";
+//@import "dictionary";
+//@import "tests";
+//@import "day";
+//@menu-width: 160px;
+//
+//body {
+//  margin: auto;
+//  max-width: 1520px;
+//  background-color: #dbfff4;
+//  .alert {
+//    font-size: 15px;
+//    display: none;
+//    text-align: center;
+//    position: fixed;
+//    bottom: 60px;
+//    left: 170px;
+//  }
+//  #hello {
+//    font-family: 'Comfortaa', cursive;
+//    z-index: 14;
+//    color: #F0F7D4;
+//    font-size: 19px;
+//    position: absolute;
+//    top: 15px;
+//    right: 30px;
+//  }
+//  #brain-storm {
+//    width: 100%;
+//    max-width: 1360px;
+//    font-size: 26px;
+//    padding-top: 10px;
+//    font-family: 'Comfortaa', cursive;
+//    color: #F0F7D4;
+//    background-color: #341509;
+//    text-align: center;
+//    position: fixed;
+//    height: 60px;
+//    bottom: 0;
+//    cursor: pointer;
+//  }
+//  #brain-storm:hover {
+//    background-color: #FC7307;
+//  }
+//  .content {
+//    .vertical-menu {
+//      z-index: 45;
+//      position: fixed;
+//      top: 0;
+//      height: 100%;
+//      overflow: auto;
+//      width: @menu-width;
+//      .logo-container {
+//        display: block;
+//        .logo {
+//          width: 42%;
+//        }
+//      }
+//      .menu {
+//        a {
+//          font-size: 17px;
+//          color: #F0F7D4;
+//          display: block;
+//          padding: 12px;
+//          text-decoration: none;
+//        }
+//
+//        a:hover {
+//          background-color: #FC7307;
+//        }
+//
+//        a.active {
+//          background-color: #F0F7D4;
+//          color: #347B98;
+//        }
+//      }
+//    }
+//
+//    .top-menu {
+//      z-index: 40;
+//      position: fixed;
+//      width: 100%;
+//      height: 59px;
+//      background-color: #341509;
+//      padding-right: 15px;
+//      .logo-container {
+//        float: left;
+//        width: 60px;
+//        .logo {
+//          width: 100%;
+//        }
+//      }
+//      .bar-button {
+//        padding-top: 12px;
+//        float: right;
+//        .fa-bars {
+//          color: #448D76;
+//        }
+//      }
+//    }
+//
+//    .main-container{
+//      position: relative;
+//      height: 100%;
+//      margin-left: @menu-width;
+//      header {
+//        h1 {
+//          margin-top: 0;
+//          padding: 10px 0;
+//          font-family: 'Comfortaa', cursive;
+//        }
+//      }
+//      .back-to-map {
+//        margin-top: 30px;
+//        color: #347B98;
+//      }
+//      #lessons {
+//        .row {
+//          margin-right: 0!important;
+//          margin-left: 0!important;
+//          #rules-title {
+//            font-weight: bold;
+//            font-family: 'Comfortaa', cursive;
+//            color: #ff6a46;
+//          }
+//        }
+//        .nav-pills>li.active>a, .nav-pills>li.active>a:focus {
+//          background-color: #341509!important;
+//          color: #F0F7D4!important;
+//        }
+//        .nav-pills>li>a:hover {
+//          background-color: #FC7307!important;
+//          color: #F0F7D4!important;
+//        }
+//        .nav-pills>li>a {
+//          font-size: 18px;
+//          color: #347B98!important;
+//        }
+//        .row {
+//          margin-top: 30px;
+//          .tab-content {
+//            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+//            td {
+//              background-color: #D4E4F7;
+//              color: #347B98;
+//            }
+//            .click-td:hover {
+//              background-color: #FC7307;
+//              color: #D4E4F7;
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+//.blue {
+//  background-color: #347B98;
+//  color: white;
+//}
+//.brown {
+//  background-color: #341509;
+//  color: #D4E4F7;
+//}
+//
+//@media (min-width: 767px) {
+//  .top-menu {
+//    display: none !important;
+//  }
+//  #mySidebar {
+//    display: block!important;
+//  }
+//  .fa-remove {
+//    visibility: hidden!important;
+//  }
+//}
+//@media (max-width: 767px) {
+//  .main-container {
+//    margin-left: 0 !important;
+//  }
+//    #brain-storm {
+//      left: 0!important;
+//  }
+//  #infograph{
+//    left: 0!important;
+//  }
+//  .alert {
+//    left: 10px!important;
+//  }
+//}
+//tr {
+//  text-align: center;
+//  td {
+//    vertical-align: middle!important;
+//  }
+//  .lesson-img{
+//    width: 40px;
+//  }
+//  .click-td {
+//    cursor: pointer;
+//  }
+//}
+//
+//tr:hover {
+//  background-color: #ff6a46;
+//  color: white;
+//
+//}

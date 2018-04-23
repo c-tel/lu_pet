@@ -42,82 +42,19 @@ exports.Dictionary_Lesson = ejs.compile("<header id=\"header-title\"><h1 class=\
 exports.Grammar_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n<div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl\"><%= tests.sentence%></h1>\r\n        <h4 id=\"uk\">(<%= tests.trans%>)</h4>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
 exports.Dictionary_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl-word\"><%= tests.word%></h1>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
 exports.Info = ejs.compile("<div id=\"infograph\">\r\n    <h4 id=\"label\">Скільки слів ви вивчили за сьогодні?</h4>\r\n    <h2><span id=\"number\"><%=count%></span></h2>\r\n    <!--<div id=\"shareBtn\" class=\"btn btn-success clearfix\">Share</div>-->\r\n    <button id=\"close\" class=\"btn btn-default\">Ok</button>\r\n</div>\r\n\r\n<div id=\"back\"></div>\r\n<!--<script>-->\r\n    <!--window.fbAsyncInit = function() {-->\r\n        <!--FB.init({-->\r\n            <!--appId            : '408371692927964',-->\r\n            <!--autoLogAppEvents : true,-->\r\n            <!--xfbml            : true,-->\r\n            <!--version          : 'v2.11'-->\r\n        <!--});-->\r\n    <!--};-->\r\n\r\n    <!--(function(d, s, id){-->\r\n        <!--var js, fjs = d.getElementsByTagName(s)[0];-->\r\n        <!--if (d.getElementById(id)) {return;}-->\r\n        <!--js = d.createElement(s); js.id = id;-->\r\n        <!--js.src = \"https://connect.facebook.net/en_US/sdk.js\";-->\r\n        <!--fjs.parentNode.insertBefore(js, fjs);-->\r\n    <!--}(document, 'script', 'facebook-jssdk'));-->\r\n<!--</script>-->");
-},{"ejs":9}],3:[function(require,module,exports){
-var Templates = require('./Templates');
-var Map = require('./map');
-var $temp = $('#template');
-var API = require('./API');
-
-function grammarTemp(data) {
-    $temp.html("");
-    var html_code = Templates.Grammar_Lesson({title:data.title, sources:data.srcs});
-    var $nodeGr = $(html_code);
-    $nodeGr.find('.back-to-map').on('click',function () {
-        $($temp).fadeOut(300, function () {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-                else alert('error');
-            });
-            $($temp).fadeIn(300);
-        });
-    });
-    $temp.append($nodeGr);
-}
-function dictionaryTemp(data) {
-    var numb = 0;
-    drawWord(numb, data);
-}
-function drawWord(numb, data) {
-    $temp.html("");
-    var html_code = Templates.Dictionary_Lesson({title:data.title, word: data.dict[numb], length: data.dict.length, numb: numb});
-    var $nodeD = $(html_code);
-    $nodeD.find('.back-to-map').on('click',function () {
-        $($temp).fadeOut(300, function () {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-                else alert('error');
-            });
-            $($temp).fadeIn(300);
-        });
-    });
-    $nodeD.find('.fa-arrow-right').on('click', function () {
-        if(numb < data.dict.length-1) {
-            numb++;
-            $('#dict-container').fadeOut(300, function () {
-                drawWord(numb, data);
-                $('#dict-container').fadeIn(300);
-            });
-        }
-    });
-    $nodeD.find('.fa-arrow-left').on('click', function () {
-        if(numb) {
-            numb--;
-            $('#dict-container').fadeOut(300, function () {
-                drawWord(numb, data);
-                $('#dict-container').fadeIn(300);
-            });
-        }
-    });
-    $temp.append($nodeD);
-}
-
-exports.grammarTemp = grammarTemp;
-exports.dictionaryTemp = dictionaryTemp;
-},{"./API":1,"./Templates":2,"./map":5}],4:[function(require,module,exports){
+},{"ejs":6}],3:[function(require,module,exports){
 $(function() {
-    var Map = require("./map");
+    // var Map = require("./map");
     var Welcome = require('./welcome.js');
     var API = require('./API');
     var Templates = require('./Templates');
 
-     if(window.location.href.indexOf('home') !== -1) {
-        API.backendPost('/api/init/', {}, function (err, data) {
-            if (!err)
-                Map.initialiseMap(data);
-        });
-    }
+    //  if(window.location.href.indexOf('home') !== -1) {
+    //     API.backendPost('/api/init/', {}, function (err, data) {
+    //         if (!err)
+    //             Map.initialiseMap(data);
+    //     });
+    // }
 
     $('#exit').on('click',function () {
        API.backendPost('/logout/', null,function () {
@@ -133,201 +70,16 @@ $(function() {
             });
         });
     });
-    $('#drop').on('click', function () {
-        API.backendPost('/api/drop/', {}, function (err, data) {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-            });
-        });
-    });
+    // $('#drop').on('click', function () {
+    //     API.backendPost('/api/drop/', {}, function (err, data) {
+    //         API.backendPost('/api/init/', {}, function (err, data) {
+    //             if (!err)
+    //                 Map.initialiseMap(data);
+    //         });
+    //     });
+    // });
 });
-},{"./API":1,"./Templates":2,"./map":5,"./welcome.js":7}],5:[function(require,module,exports){
-var Templates = require('./Templates');
-var Lessons = require("./lessons");
-var Tests = require("./test");
-
-var $temp = $('#template');
-var $nodeMap;
-var API = require('./API');
-
-
-function initialise(data) {
-    $temp.html('');
-    var lessons = Templates.Lessons_Map({title:'Уроки', lessons: data.lessons, tests: data.tests, level: data.level, username: data.username});
-    $nodeMap = $(lessons);
-
-    $temp.append($nodeMap);
-    addListener(data.level);
-}
-function addListener(level) {
-    $nodeMap.find('#brain-storm').on('click', function () {
-        API.backendPost('/api/review/', {}, function (err, data) {
-            if (!err) {
-                if(data.tests.length)
-                    Tests.testTemp(data, true);
-                else {
-                    $nodeMap.find('.alert').fadeIn(800, function () {
-                        $nodeMap.find('.alert').fadeOut(3000);
-                    });
-                }
-            }
-            else
-                alert('Error');
-        });
-    });
-
-    $nodeMap.find('.l.click-td').click(function () {
-        var num = $(this).attr("id");
-        if (num > level) {
-            var id = '#' + num + 'img';
-            $(id).effect("pulsate", {times: 1}, 1500);
-            return;
-        }
-
-        var data = {
-            'num': num
-        };
-        API.backendPost('/api/lesson/', data, function (err, data) {
-            if (!err) {
-                if (data.status === "ok") {
-                    if (data.type === "grammar")
-                        Lessons.grammarTemp(data);
-                    else {
-                        Lessons.dictionaryTemp(data);
-                    }
-                }
-            }
-            else
-                alert('Error');
-        });
-    });
-
-    $nodeMap.find('.t.click-td').click(function () {
-        var num = $(this).attr("id");
-        var data = {
-            'num': num
-        };
-        API.backendPost('/api/test/', data, function (err, data) {
-            if (!err) {
-                if (data.status === "ok")
-                    Tests.testTemp(data, false);
-            }
-            else
-                alert('Error');
-        });
-
-    });
-}
-
-exports.initialiseMap = initialise;
-},{"./API":1,"./Templates":2,"./lessons":3,"./test":6}],6:[function(require,module,exports){
-var Templates = require('./Templates');
-var API = require('./API');
-var Map = require('./map');
-var $temp = $('#template');
-
-function testTemp(data, bool) {
-    var numb = 0;
-    drawWordTest(numb, data, bool);
-}
-
-function findRightWord(data) {
-    for(var i = 0; i<data.variants.length; i++) {
-        if(data.variants[i] === data.correct)
-            return i;
-    }
-}
-
-function drawWordTest(numb, data, bool) {
-    $temp.html("");
-    var html_code;
-    if(data.type === "grammar") {
-        html_code = Templates.Grammar_Test({title: data.title, tests: data.tests[numb]});
-    } else {
-        html_code = Templates.Dictionary_Test({title: data.title, tests: data.tests[numb]});
-    }
-    var $nodeT = $(html_code);
-
-    if(numb === 0)
-        $nodeT.find('#prev-test').addClass('disabled');
-
-    $nodeT.find('.back-to-map').on('click',function () {
-        $($temp).fadeOut(300, function () {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-                else alert('error');
-            });
-            $($temp).fadeIn(300);
-        });
-    });
-
-    $nodeT.find('#finish-test').click(function () {
-        if(!bool) {
-            API.backendPost('/api/finish/', {id: data.id}, function (err, data) {
-                if (!err) {
-                    API.backendPost('/api/init/', {}, function (err, data) {
-                        if (!err)
-                            Map.initialiseMap(data);
-                    });
-                }
-            });
-        } else {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-            });
-        }
-
-    });
-
-    var rightId = findRightWord(data.tests[numb]);
-
-    $nodeT.find('#check-test').on('click', function () {
-        if(document.getElementById(rightId).checked === true ) {
-            $nodeT.find('#help-block').text('Правильно!');
-            $nodeT.find('#help-block').css('font-size', '18px');
-            $nodeT.find('#help-block').css('color', '#448D76');
-            $nodeT.find('#help-block').css('visibility', 'visible');
-            if(data.type === 'dict') {
-                API.backendPost('/api/rec_w/', {id: data.tests[numb].id}, function (err, data) {
-                    if (!err) {
-                    }
-                });
-            }
-            if (numb === data.tests.length - 1) {
-                $nodeT.find('#check-test').hide();
-                $nodeT.find('#finish-test').show();
-            } else {
-                $(this).attr('disabled', true);
-                setTimeout(function () {
-                    numb++;
-                    $('.test').fadeOut(300, function () {
-                        drawWordTest(numb, data, bool);
-                        $('.test').fadeIn(300);
-                    });
-                }, 1100);
-            }
-        } else {
-            $nodeT.find('#help-block').css('visibility', 'visible');
-        }
-    });
-
-    $nodeT.find('#prev-test').on('click', function () {
-        if(numb) {
-            numb--;
-            $('.test').fadeOut(300, function () {
-                drawWordTest(numb, data, bool);
-                $('.test').fadeIn(300);
-            });
-        }
-    });
-    $temp.append($nodeT);
-}
-
-exports.testTemp = testTemp;
-},{"./API":1,"./Templates":2,"./map":5}],7:[function(require,module,exports){
+},{"./API":1,"./Templates":2,"./welcome.js":4}],4:[function(require,module,exports){
 var API = require('./API');
 
 $("#logup-butt").click(function () {
@@ -345,8 +97,9 @@ $("#logup-butt").click(function () {
     }else {
         API.backendPost('/signup/', data, function (err, data) {
             if (!err) {
-                if (data.status === "ok")
+                if (data['status'] === "ok") {
                     window.location.href = "/home";
+                }
             }
         })
     }
@@ -409,9 +162,9 @@ $(".change-form").click(function () {
 //             alert('Error');
 //     })
 // }
-},{"./API":1}],8:[function(require,module,exports){
+},{"./API":1}],5:[function(require,module,exports){
 
-},{}],9:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1279,7 +1032,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":11,"./utils":10,"fs":8,"path":12}],10:[function(require,module,exports){
+},{"../package.json":8,"./utils":7,"fs":5,"path":9}],7:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1445,7 +1198,7 @@ exports.cache = {
   }
 };
 
-},{}],11:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 module.exports={
   "_args": [
     [
@@ -1561,7 +1314,7 @@ module.exports={
   "version": "2.5.7"
 }
 
-},{}],12:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1789,7 +1542,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":13}],13:[function(require,module,exports){
+},{"_process":10}],10:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -1975,4 +1728,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[4]);
+},{}]},{},[3]);

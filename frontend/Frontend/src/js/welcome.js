@@ -15,8 +15,9 @@ $("#logup-butt").click(function () {
     }else {
         API.backendPost('/signup/', data, function (err, data) {
             if (!err) {
-                if (data.status === "ok")
+                if (data['status'] === "ok") {
                     window.location.href = "/home";
+                }
             }
         })
     }
