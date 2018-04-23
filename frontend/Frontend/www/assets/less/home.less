@@ -102,55 +102,36 @@ button {
     position: fixed;
     bottom: 15px;
     right: 15px;
-    height: 82px;
-    font-size: 24px;
+    height: 62px;
+    font-size: 20px;
     color: white;
     //padding: 10px 3px;
-    border-radius: 50%;
-    background-color: transparent;
-    //background: #3b41c5;
+    //background-color: transparent;
+    background-color: #3b41c5;
     transition: background-color 250ms ease-in;
     .transition(background-color, color);
-    &:before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-
-      border: 1px solid orange;
-      opacity: 1;
-      .transition(opacity;);
-    }
     .btn_svg {
       position: absolute;
       top: 0;
       left: 0;
-
       width: 100%;
       height: 100%;
     }
     .btn_svg_shape {
-      stroke: #df7eff;
+      stroke: #A981BB;
       stroke-width: 1px;
       stroke-linecap: round;
       fill: transparent;
     }
     &:hover {
-      transition-delay: 250ms;
-      background-color: fade(black, 40%);
+      transition-delay: 0.45s;
+      background-color: fade(#A981BB, 80%);
       color: white;
 
-      &:before {
-        opacity: 0;
-      }
-
       .btn_svg_shape {
-        .transition(stroke-dasharray, stroke-dashoffset; 500ms;);
+        .transition(stroke-dasharray, stroke-dashoffset; 0.5s;);
         stroke-dashoffset: 0 !important;
-        animation: 500ms pencil ease-in forwards;
+        animation: 0.6s pencil ease-in forwards;
       }
     }
   }
@@ -159,7 +140,7 @@ button {
   0% {
     stroke-width: 0.5em;
   }
-  75% {
+  70% {
     stroke-width: 0.25em;
   }
   100%{
