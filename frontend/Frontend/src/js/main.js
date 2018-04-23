@@ -1,15 +1,15 @@
 $(function() {
-    var Map = require("./map");
+    // var Map = require("./map");
     var Welcome = require('./welcome.js');
     var API = require('./API');
     var Templates = require('./Templates');
 
-     if(window.location.href.indexOf('home') !== -1) {
-        API.backendPost('/api/init/', {}, function (err, data) {
-            if (!err)
-                Map.initialiseMap(data);
-        });
-    }
+    //  if(window.location.href.indexOf('home') !== -1) {
+    //     API.backendPost('/api/init/', {}, function (err, data) {
+    //         if (!err)
+    //             Map.initialiseMap(data);
+    //     });
+    // }
 
     $('#exit').on('click',function () {
        API.backendPost('/logout/', null,function () {
@@ -25,12 +25,12 @@ $(function() {
             });
         });
     });
-    $('#drop').on('click', function () {
-        API.backendPost('/api/drop/', {}, function (err, data) {
-            API.backendPost('/api/init/', {}, function (err, data) {
-                if (!err)
-                    Map.initialiseMap(data);
-            });
-        });
-    });
+    // $('#drop').on('click', function () {
+    //     API.backendPost('/api/drop/', {}, function (err, data) {
+    //         API.backendPost('/api/init/', {}, function (err, data) {
+    //             if (!err)
+    //                 Map.initialiseMap(data);
+    //         });
+    //     });
+    // });
 });
