@@ -11,7 +11,8 @@ def default(request):
 
 
 def main(request):
-    return render(request, 'home.html')
+    username = request.user.username if request.user else 'user'
+    return render(request, 'home.html', {'username': username})
 
 
 def welcome(request):
@@ -54,7 +55,10 @@ def sign_in(request):
 @csrf_exempt
 def sign_out(request):
     Session.objects.exit(request.session)
-    return JsonResponse({'status': 'ok'})
+    response = JsonResponse({'status': 'ok'})
+    response.delete_cookie('sessid')
+    print('cookie deleted')
+    return response
 
 
 @csrf_exempt
