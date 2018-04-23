@@ -18,8 +18,7 @@ class SessionManager(models.Manager):
         return None
 
     @staticmethod
-    def exit(sessid):
-        session = Session.objects.get(key=sessid)
+    def exit(session):
         session.delete()
 
 
