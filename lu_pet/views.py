@@ -30,7 +30,7 @@ def sign_up(request):
         if not User.sign_up(username, password, email, email_dispatch):
             return JsonResponse({'status': 'error'})
         key = User.sign_in(username, password)
-        response = HttpResponseRedirect('/home')
+        response = JsonResponse({'status': 'ok'})
         response.set_cookie('sessid', key)
         return response
 
@@ -44,8 +44,7 @@ def sign_in(request):
         sessid = User.sign_in(username, password)
         signed = sessid is not None
         res = {
-            'status': 'ok',
-            'signed': signed
+            'status': ('ok' if signed else 'error'),
         }
         response = JsonResponse(res)
         if signed:
