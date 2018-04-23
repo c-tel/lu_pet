@@ -57,6 +57,7 @@ def sign_out(request):
     Session.objects.exit(request.session)
     response = JsonResponse({'status': 'ok'})
     response.delete_cookie('sessid')
+    print('cookie deleted')
     return response
 
 
