@@ -45,7 +45,7 @@ def sign_in(request):
         sessid = Session.objects.authentificate(username, password)
         if sessid:
             response = JsonResponse({'status': 'ok'})
-            # response.set_cookie('sessid', sessid)
+            response.set_cookie('sessid', sessid)
             return response
     return JsonResponse({'status': 'error'})
 

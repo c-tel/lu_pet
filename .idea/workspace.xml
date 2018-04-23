@@ -2,15 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="469df6fd-dde7-4c49-8d61-7cef5dd5c20a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/middleware.py" afterPath="$PROJECT_DIR$/lu_pet/middleware.py" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/lu_pet/migrations/0001_initial.py" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/migrations/0002_auto_20180414_2306.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/migrations/0003_feedback.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/migrations/0004_advertisement_date_created.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/models.py" afterPath="$PROJECT_DIR$/lu_pet/models.py" />
-      <change beforePath="$PROJECT_DIR$/lu_pet/settings.py" afterPath="$PROJECT_DIR$/lu_pet/settings.py" />
       <change beforePath="$PROJECT_DIR$/lu_pet/views.py" afterPath="$PROJECT_DIR$/lu_pet/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lu_pet/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -47,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lu_pet/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
+            <state relative-caret-position="587">
+              <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
               <folding>
                 <element signature="e#0#88#0" expanded="true" />
               </folding>
@@ -94,8 +85,8 @@
         <option value="$PROJECT_DIR$/lu_pet/urls.py" />
         <option value="$PROJECT_DIR$/lu_pet/settings.py" />
         <option value="$PROJECT_DIR$/lu_pet/middleware.py" />
-        <option value="$PROJECT_DIR$/lu_pet/views.py" />
         <option value="$PROJECT_DIR$/lu_pet/models.py" />
+        <option value="$PROJECT_DIR$/lu_pet/views.py" />
       </list>
     </option>
   </component>
@@ -704,22 +695,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lu_pet/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="44" column="33" lean-forward="true" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lu_pet/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lu_pet/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="47" column="12" lean-forward="false" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#88#0" expanded="true" />
           </folding>
         </state>
       </provider>
