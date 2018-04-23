@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <title>MyPolish</title>
+    <title>Lu, Pet</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,6 @@
     <!--<link rel="stylesheet/less" type="text/css" href="./assets/less/home.less" />-->
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js"></script>
-    <title>Lu, Pet</title>
 </head>
 <body>
 
@@ -96,12 +95,47 @@
 		<div class="modal-content">
 			<!-- Modal Header -->
 			<div class="modal-header">
-				<h4 class="modal-title">Modal Heading</h4>
+				<h4 class="modal-title">Створіть своє оголошення</h4>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<!-- Modal body -->
 			<div class="modal-body">
-				Modal body..
+				<form>
+					<div class="form-group">
+						<label for="exampleSelect1">Виберіть тип оголошення:</label>
+						<select class="form-control" id="typeOfAdv">
+							<option>Загубив</option>
+							<option>Знайшов</option>
+							<option>Віддам у добрі руки</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputFile">Фотографія тварини:</label>
+						<input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+						<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleSelect1">Виберіть тип тварини:</label>
+						<select class="form-control" id="typeOfAdv">
+							<option>Песик</option>
+							<option>Котик</option>
+							<option>Інше</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="exampleSelect1">Виберіть район:</label>
+						<select class="form-control" id="district">
+							<option>Шевченківський</option>
+							<option>Оболонський</option>
+							<option>Подільський</option>
+							<option>Дніпровський</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="exampleTextarea">Додайте опис:</label>
+						<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+					</div>
+				</form><button class="btn btn-primary">Розмістити</button>
 			</div>
 			<!-- Modal footer -->
 			<div class="modal-footer">
