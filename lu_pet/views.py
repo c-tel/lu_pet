@@ -11,14 +11,14 @@ def default(request):
 
 
 def main(request):
-    return render(request, 'home.html')
+    username = request.user.username if request.user else 'user'
+    return render(request, 'home.html', {'username': username})
 
 
 def welcome(request):
     if request.user is None:
         return render(request, 'welcome.html')
-    username = request.user.username if request.user else 'user'
-    return HttpResponseRedirect('/home', {'username': username})
+    return HttpResponseRedirect('/home')
 
 
 # API
