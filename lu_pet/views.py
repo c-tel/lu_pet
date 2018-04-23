@@ -52,7 +52,7 @@ def sign_in(request):
 
 @csrf_exempt
 def sign_out(request):
-    SessionManager.exit(request.session)
+    Session.objects.exit(request.session)
     return JsonResponse({'status': 'ok'})
 
 
