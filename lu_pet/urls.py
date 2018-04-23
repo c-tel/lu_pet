@@ -18,6 +18,7 @@ from django.conf.urls import url
 
 
 urlpatterns = [
+    url('^$', default),
     url('^home$', main),
     url('^welcome/$', welcome),
     url('^login/$', sign_in),

@@ -1,18 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponsePermanentRedirect
 import json
 from lu_pet.models import User, Advertisement
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 
+# pages
+def default(request):
+    return HttpResponsePermanentRedirect('/home')
+
+
 def main(request):
-    return render(request, 'index.html')
+    return render(request, 'home.html')
 
 
 def welcome(request):
     return render(request, 'welcome.html')
 
 
+# API
 @csrf_exempt
 def sign_up(request):
     if request.method == 'POST':
