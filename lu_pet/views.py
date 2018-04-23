@@ -55,7 +55,9 @@ def sign_in(request):
 @csrf_exempt
 def sign_out(request):
     Session.objects.exit(request.session)
-    return JsonResponse({'status': 'ok'})
+    response = JsonResponse({'status': 'ok'})
+    response.delete_cookie('sessid')
+    return response
 
 
 @csrf_exempt
