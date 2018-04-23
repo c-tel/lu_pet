@@ -1,37 +1,37 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
 import random
 import string
 
 
-class User(AbstractUser):
-    email_dispatch = models.BooleanField()
-
+class SessionManager(models.Manager):
     @staticmethod
-    def sign_up(username, password, email, email_dispatch):
-        if not User.objects.filter(username=username).exists():
-            print(password)
-            user = User(username=username, email=email, email_dispatch=email_dispatch)
-            user.set_password(password)
-            user.save()
-            return user
+    def authentificate(username, password):
+        if User.objects.filter(username=username).exists():
+            user = User.objects.get(username=username)
+            if user.check_password(password):
+                session = Session()
+                session.user = user
+                session.key = "".join(random.choice(string.ascii_letters) for _ in range(64))
+                session.save()
+                return session.key
         return None
 
     @staticmethod
-    def sign_in(username, password):
-        try:
-            user = User.objects.get(username=username)
-            if user.check_password(password):
-                key = generate_key()
-                sessions[key] = user.username
-                return key
-            return None
-        except User.DoesNotExist:
-            return None
+    def exit(sessid):
+        session = Session.objects.get(key=sessid)
+        session.delete()
 
-    @staticmethod
-    def sign_out(key):
-        del sessions[key]
+
+class Session(models.Model):
+    key = models.CharField(unique=True, max_length=64)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    objects = SessionManager()
+
+
+def add_user(username, password):
+    user = User.objects.create_user(username=username, password=password)
+    user.save()
 
 
 class Advertisement(models.Model):

@@ -128,5 +128,3 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-AUTH_USER_MODEL = 'lu_pet.User'
