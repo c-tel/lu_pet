@@ -8,16 +8,8 @@ class User(AbstractUser):
     email_dispatch = models.BooleanField()
 
     @staticmethod
-    def reserved(username):
-        try:
-            User.objects.get(username=username)
-            return False
-        except User.DoesNotExist:
-            return True
-
-    @staticmethod
     def sign_up(username, password, email, email_dispatch):
-        if not User.reserved(username):
+        if not User.objects.filter(username=username).exists():
             user = User(username=username, password=password, email=email, email_dispatch=email_dispatch)
             user.save()
             return user
