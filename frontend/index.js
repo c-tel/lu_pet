@@ -56,19 +56,35 @@ $(function() {
     //     });
     // }
 
+    $('.btn-svg').each(function(){
+        var
+            $this = $(this),
+            width = $this.outerWidth(),
+            height = $this.outerHeight(),
+            $svg = $this.find('svg'),
+            $rect = $svg.find('rect'),
+            totalPerimeter = width*2+height*2;
+
+        $svg[0].setAttribute('viewBox', '0 0 '+width+' '+height);
+        $rect.attr('width', width);
+        $rect.attr('height', height);
+        $rect.css({
+            "strokeDashoffset": totalPerimeter,
+            "strokeDasharray": totalPerimeter
+        });
+    });
+
     $('#exit').on('click',function () {
        API.backendPost('/logout/', null,function () {
            window.location.href='/home';
        })
     });
-    $('#info_trigger').on('click', function () {
-        API.backendPost('/api/day/', {}, function (err, data) {
-            var code = Templates.Info({count: data.count});
-            $('#modal_window').append(code);
-            $('#close').click(function () {
-                $('#modal_window').html('');
-            });
-        });
+    $('#myModal').click(function () {
+
+            // $('#modal_window').append(code);
+            // $('#close').click(function () {
+            //     $('#modal_window').html('');
+            // });
     });
     // $('#drop').on('click', function () {
     //     API.backendPost('/api/drop/', {}, function (err, data) {
@@ -93,11 +109,11 @@ $("#logup-butt").click(function () {
         'email_dispatch' : true
     };
     if(login==='' || pwd===''){
-        $('.error').css('visibility', 'visible');
+        // $('.error').css('visibility', 'visible');
     }else {
         API.backendPost('/signup/', data, function (err, data) {
             if (!err) {
-                if (data['status'] === "ok") {
+                if (data.status === "ok") {
                     window.location.href = "/home";
                 }
             }

@@ -11,11 +11,11 @@ $("#logup-butt").click(function () {
         'email_dispatch' : true
     };
     if(login==='' || pwd===''){
-        $('.error').css('visibility', 'visible');
+        // $('.error').css('visibility', 'visible');
     }else {
         API.backendPost('/signup/', data, function (err, data) {
             if (!err) {
-                if (data['status'] === "ok") {
+                if (data.status === "ok") {
                     window.location.href = "/home";
                 }
             }
