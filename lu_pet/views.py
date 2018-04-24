@@ -70,3 +70,11 @@ def get_advertisements(request):
     data = json.loads(request.body.decode('utf-8'))
     resp = Advertisement.ads_info(data)
     return JsonResponse(resp, safe=False)
+
+
+@csrf_exempt
+def post_feedback(request):
+    if request.method == 'POST':
+        data = json.loads(request.body.decode('utf-8'))
+        Feedback.add(text=data['text'], contacts=data['contacts'], adv_id=data['adv_id'])
+    return JsonResponse({'status': 'ok'})

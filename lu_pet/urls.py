@@ -26,4 +26,5 @@ urlpatterns = [
     url('^logout/$', sign_out),
     url('^post_adv/$', post_advertisement),
     url('^get_advertisements/$', get_advertisements),
+    url('^post_fb/$', post_feedback),
 ]

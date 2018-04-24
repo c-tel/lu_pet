@@ -65,9 +65,10 @@ class Advertisement(models.Model):
     @staticmethod
     def ads_info(filters_dict):
         ads = Advertisement.objects.all()
-        ads.filter(**filters_dict).order_by('date_created')
+        print(filters_dict)
+        ads = ads.filter(**filters_dict).order_by('date_created')
         res = []
-        for ad in list(ads):
+        for ad in list(ads)[::-1]:
             ad_dict = vars(ad)
             del ad_dict['_state']
             del ad_dict['date_created']
@@ -82,10 +83,15 @@ class Advertisement(models.Model):
 
 
 class Feedback(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     adv = models.ForeignKey(Advertisement, on_delete=models.CASCADE)
     text = models.CharField(max_length=256)
     contacts = models.CharField(max_length=128)
+
+    @staticmethod
+    def add(text, contacts, adv_id):
+        ad = Advertisement.objects.get(pk=adv_id)
+        fb = Feedback.objects.create(text=text, contacts=contacts, adv=ad)
+        fb.save()
 
 
 def generate_key():
