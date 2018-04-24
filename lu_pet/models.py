@@ -54,6 +54,7 @@ class Advertisement(models.Model):
         (FOUND, 'Found'),
         (HANDS, 'Good hands')
     )
+    name = models.CharField(max_length=16, default='Tuzick')
     type = models.SmallIntegerField(choices=TYPE_CHOICES, default=LOST)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pet = models.SmallIntegerField(choices=PET_CHOICES, default=OTHER)
@@ -70,9 +71,7 @@ class Advertisement(models.Model):
     @staticmethod
     def add(user, data):
         adv = Advertisement.objects.create(author=user, text=data['text'], type=data['type'],
-                                           pet=data['pet'], district=data['district'])
-        with open('{}.jpg'.format(adv.pk), 'wb') as file:
-            file.write(data['img'].encode())
+                                           pet=data['pet'], district=data['district'], name=data['name'])
         adv.save()
 
 
