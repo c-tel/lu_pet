@@ -91,10 +91,9 @@ $(function() {
             'district' : district,
             'text' : text
         };
-        alert(data['district']);
-        // API.backendPost('/post_adv/', null,function () {
-        //     window.location.href='/home';
-        // })
+        API.backendPost('/post_adv/', data, function (err, data) {
+             window.location.href='/home';
+        })
     });
     $('#myModal').click(function () {
 
