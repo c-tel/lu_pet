@@ -56,7 +56,7 @@ button {
       .menu__item {
         display: block;
       }
-      .menu__link {
+      a {
         font-weight: 600;
         position: relative;
         display: block;
@@ -69,19 +69,23 @@ button {
   }
 
   .content{
-    //position: relative;
+    text-align: center;
     min-width: 300px;
     margin-left: @menu-width;
+    padding: 20px 0;
     //width: 100%;
     //height: 100%;
+    .filters {
+      margin: 5px 15px;
+      .form-group {
+        margin-left: 15px;
+      }
+    }
     .card {
       margin: 15px;
-      //border-radius: 8px;
       min-width: 100px;
       min-height: 100px;
       text-align: center;
-      //padding: 7px;
-      //background: white;
       .card-img-top {
         //max-width: 100%;
         min-width: 200px;

@@ -27,10 +27,10 @@
     </header>
     <nav id="side-menu" class="menu">
         <ul data-menu="main" class="menu__level menu-curr">
-            <li class="menu__item"><a class="menu__link" href="#">Загублені тварини</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Знайдені тварини</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Добрі руки</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Контакти</a></li>
+            <li class="menu__item"><a class="active" href="#">Загублені тварини</a></li>
+            <li class="menu__item"><a href="#">Знайдені тварини</a></li>
+            <li class="menu__item"><a href="#">Добрі руки</a></li>
+            <li class="menu__item"><a href="#">Контакти</a></li>
             <li class="menu__item" id="profile"><a class="menu__link" href="#">Особистий кабінет</a></li>
             <li class="menu__item" id="exit"><a class="menu__link" href="#">Вихід</a></li>
         </ul>
@@ -44,44 +44,45 @@
 	</button>
 
     <div class="content">
+		<h2>Загублені тварини</h2><div class="dropdown ">
+	</div>
+		<div class="filters">
+			<div class="d-flex flex-row-reverse mb-3">
+				<div class="form-group">
+					<label for="exampleSelect1">Виберіть район:</label>
+					<select id="district-select" class="form-control district" onchange="selectDistrict()">
+						<option>Все</option>
+						<option>Шевченківський</option>
+						<option>Оболонський</option>
+						<option>Подільський</option>
+						<option>Дніпровський</option>
+					</select>
+					<script>
+                        function selectDistrict() {
+                            var x = $("#district-select").val();
+                            alert(x);
+                        }
+					</script>
+				</div>
+				<div class="form-group">
+					<label for="exampleSelect1">Виберіть тваринку:</label>
+					<select class="form-control typeOfAdv">
+						<option>Все</option>
+						<option>Песик</option>
+						<option>Котик</option>
+						<option>Інше</option>
+					</select>
+				</div>
+			</div>
+		</div>
 		<div class="row">
-			<div class=" col-md-6 col-lg-4">
+			<div class="col-md-6 col-lg-4">
 				<div class="card bg-light text-dark">
 					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
 					<div class="card-body">
 						<h4 class="card-title">Bobik</h4>
 						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
 						<a href="#" class="btn btn-primary">Відгукнутися</a>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-6 col-lg-4">
-				<div class="card bg-light text-dark">
-					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
-					<div class="card-body">
-						<h4 class="card-title">Bobik</h4>
-						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
-						<a href="#" class="btn btn-primary">Відгукнутися</a>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-6 col-lg-4">
-				<div class="card bg-light text-dark">
-					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
-					<div class="card-body">
-						<h4 class="card-title">Bobik</h4>
-						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
-						<a href="#" class="btn btn-primary">Відгукнутися</a>
-					</div>
-				</div>
-			</div>
-			<div class=" col-md-6 col-lg-4">
-				<div class="card bg-light text-dark">
-					<img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
-					<div class="card-body">
-						<h4 class="card-title">Bobik</h4>
-						<p class="card-text">Bla blablabakxjsj udhvufdhv vhuk xdfvxkfhfd vudf dvulxdfbgfbxfligbhigfb ngfnb  hvchjjbx</p>
-						<a href="#" class="btn">Відгукнутися</a>
 					</div>
 				</div>
 			</div>
@@ -132,6 +133,10 @@
 						</select>
 					</div>
 					<div class="form-group">
+						<label for="exampleTextarea">Ім'я тваринки: </label>
+						<input type="text" class="form-control" id="name"></input>
+					</div>
+					<div class="form-group">
 						<label for="exampleTextarea">Додайте опис:</label>
 						<textarea class="form-control" id="descr" rows="3"></textarea>
 					</div>
@@ -153,6 +158,7 @@
 <script type = "text/javascript"
         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <!--my js-->
 <script type="text/javascript" src="/static/index.js?11"> </script>

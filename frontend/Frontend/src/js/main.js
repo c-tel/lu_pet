@@ -4,12 +4,15 @@ $(function () {
     var API = require('./API');
     var Templates = require('./Templates');
 
-    //  if(window.location.href.indexOf('home') !== -1) {
-    //     API.backendPost('/api/init/', {}, function (err, data) {
-    //         if (!err)
-    //             Map.initialiseMap(data);
-    //     });
-    // }
+     if(window.location.href.indexOf('home') !== -1) {
+        API.backendPost('/get_advertisements/', {}, function (err, data) {
+            if (!err)
+                alert(data);
+                // Map.initialiseMap(data);
+            else
+                alert("no data");
+        });
+    }
 
     $('.btn-svg').each(function () {
         var
@@ -29,6 +32,14 @@ $(function () {
         });
     });
 
+    // $("#myInput").on("keyup", function() {
+    //     alert("fff");
+    //     var value = $(this).val().toLowerCase();
+    //     $(".row").filter(function() {
+    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    //     });
+    // });
+
     $('#exit').on('click', function () {
         API.backendPost('/logout/', null, function () {
             window.location.href = '/home';
@@ -39,8 +50,9 @@ $(function () {
         var type = $('#typeOfAdv').prop('selectedIndex');
         var pet = $('#typeOfPet').prop('selectedIndex');
         var district = $("#district").find('option:selected').text();
+        var name = $('#name').val();
         var text = $('#descr').val();
-        var imgfile = $('#img_file')[0].files[0]
+        var imgfile = $('#img_file')[0].files[0];
         var reader = new FileReader();
         reader.onload = function () {
             var img = reader.result;
@@ -49,6 +61,7 @@ $(function () {
                 'type': type,
                 'pet': pet,
                 'district': district,
+                'name': name,
                 'text': text
             };
             API.backendPost('/post_adv/', data, function (err, data) {
