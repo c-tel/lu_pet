@@ -54,8 +54,7 @@ def sign_in(request):
 @csrf_exempt
 def sign_out(request):
     Session.objects.exit(request.session)
-    response = JsonResponse({'status': 'ok'})
-    return response
+    return JsonResponse({'status': 'ok'})
 
 
 @csrf_exempt
@@ -63,6 +62,7 @@ def post_advertisement(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
         Advertisement.add(user=request.user, data=data)
+    return JsonResponse({'status': 'ok'})
 
 
 @csrf_exempt

@@ -35,6 +35,9 @@ def add_user(username, password):
 
 
 class Advertisement(models.Model):
+    class Meta:
+        app_label = 'lu_pet'
+
     DOG = 0
     CAT = 1
     OTHER = 2
@@ -43,12 +46,20 @@ class Advertisement(models.Model):
         (CAT, 'Cat'),
         (OTHER, 'Other')
     )
-    lost = models.BooleanField()
+    LOST = 0
+    FOUND = 1
+    HANDS = 2
+    TYPE_CHOICES = (
+        (LOST, 'Lost'),
+        (FOUND, 'Found'),
+        (HANDS, 'Good hands')
+    )
+    type = models.SmallIntegerField(choices=TYPE_CHOICES, default=LOST)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     pet = models.SmallIntegerField(choices=PET_CHOICES, default=OTHER)
-    title = models.CharField(max_length=64)
     text = models.CharField(max_length=500)
     date_created = models.DateField(auto_now=True)
+    district = models.CharField(max_length=32)
 
     @staticmethod
     def ads_info(filters_dict):
@@ -58,9 +69,11 @@ class Advertisement(models.Model):
 
     @staticmethod
     def add(user, data):
-        new_adv = Advertisement(author=user, title=data['title'],
-                                text=data['text'], lost=data['lost'], pet=data['pet'])
-        new_adv.save()
+        adv = Advertisement.objects.create(author=user, text=data['text'], type=data['type'],
+                                           pet=data['pet'], district=data['district'])
+        with open('{}.jpg'.format(adv.pk), 'wb') as file:
+            file.write(data['img'].encode())
+        adv.save()
 
 
 class Feedback(models.Model):
