@@ -85,8 +85,9 @@ $(function() {
         var pet = $('#typeOfPet').prop('selectedIndex');
         var district = $("#district").find('option:selected').text();
         var text = $('#descr').val();
+        alert($('#img_file')[0].files[0].size);
         var data = {
-            'img' : $('#img_file')[0].files[0],
+            'img' : $('#img_file')[0].files[0].getAsBinary(),
             'type': type,
             'pet': pet,
             'district': district,
