@@ -43,7 +43,7 @@ exports.Grammar_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brow
 exports.Dictionary_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl-word\"><%= tests.word%></h1>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
 exports.Info = ejs.compile("<div id=\"infograph\">\r\n    <h4 id=\"label\">Скільки слів ви вивчили за сьогодні?</h4>\r\n    <h2><span id=\"number\"><%=count%></span></h2>\r\n    <!--<div id=\"shareBtn\" class=\"btn btn-success clearfix\">Share</div>-->\r\n    <button id=\"close\" class=\"btn btn-default\">Ok</button>\r\n</div>\r\n\r\n<div id=\"back\"></div>\r\n<!--<script>-->\r\n    <!--window.fbAsyncInit = function() {-->\r\n        <!--FB.init({-->\r\n            <!--appId            : '408371692927964',-->\r\n            <!--autoLogAppEvents : true,-->\r\n            <!--xfbml            : true,-->\r\n            <!--version          : 'v2.11'-->\r\n        <!--});-->\r\n    <!--};-->\r\n\r\n    <!--(function(d, s, id){-->\r\n        <!--var js, fjs = d.getElementsByTagName(s)[0];-->\r\n        <!--if (d.getElementById(id)) {return;}-->\r\n        <!--js = d.createElement(s); js.id = id;-->\r\n        <!--js.src = \"https://connect.facebook.net/en_US/sdk.js\";-->\r\n        <!--fjs.parentNode.insertBefore(js, fjs);-->\r\n    <!--}(document, 'script', 'facebook-jssdk'));-->\r\n<!--</script>-->");
 },{"ejs":6}],3:[function(require,module,exports){
-$(function() {
+$(function () {
     // var Map = require("./map");
     var Welcome = require('./welcome.js');
     var API = require('./API');
@@ -56,16 +56,16 @@ $(function() {
     //     });
     // }
 
-    $('.btn-svg').each(function(){
+    $('.btn-svg').each(function () {
         var
             $this = $(this),
             width = $this.outerWidth(),
             height = $this.outerHeight(),
             $svg = $this.find('svg'),
             $rect = $svg.find('rect'),
-            totalPerimeter = width*2+height*2;
+            totalPerimeter = width * 2 + height * 2;
 
-        $svg[0].setAttribute('viewBox', '0 0 '+width+' '+height);
+        $svg[0].setAttribute('viewBox', '0 0 ' + width + ' ' + height);
         $rect.attr('width', width);
         $rect.attr('height', height);
         $rect.css({
@@ -74,10 +74,10 @@ $(function() {
         });
     });
 
-    $('#exit').on('click',function () {
-       API.backendPost('/logout/', null,function () {
-           window.location.href='/home';
-       })
+    $('#exit').on('click', function () {
+        API.backendPost('/logout/', null, function () {
+            window.location.href = '/home';
+        })
     });
 
     $('#post_adv').on('click', function () {
@@ -105,10 +105,10 @@ $(function() {
     });
     $('#myModal').click(function () {
 
-            // $('#modal_window').append(code);
-            // $('#close').click(function () {
-            //     $('#modal_window').html('');
-            // });
+        // $('#modal_window').append(code);
+        // $('#close').click(function () {
+        //     $('#modal_window').html('');
+        // });
     });
     // $('#drop').on('click', function () {
     //     API.backendPost('/api/drop/', {}, function (err, data) {
