@@ -36,8 +36,7 @@ exports.backendGet = backendGet;
 
 var ejs = require('ejs');
 
-exports.Lessons_Map = ejs.compile("<div id=\"lessons\">\r\n    <header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1><span id=\"hello\">Привіт, <%=username%> :)</span></header>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-offset-4 col-xs-8 col-sm-offset-7 col-sm-5\"><h6 id=\"rules-title\">Щоб відкрити уроки із замочком,<br>пройдіть попередні.</h6></div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8\">\r\n            <div class=\"tab-content\">\r\n                <ul class=\"nav nav-pills nav-justified\">\r\n                    <li class=\"active\"><a data-toggle=\"pill\" href=\"#materials\">Матеріали</a></li>\r\n                    <li><a data-toggle=\"pill\" href=\"#tests\">Тести</a></li>\r\n                </ul>\r\n                <div id=\"materials\" class=\"tab-pane fade in active\">\r\n                    <div id=\"table-content\" style=\"font-size: 17px\">\r\n                        <table class=\"table\">\r\n                            <tbody>\r\n                            <%for(var i = 0; i< lessons.length; i++) {%>\r\n                            <tr>\r\n                                <td><img class=\"lesson-img\" id=\"<%=lessons[i].id%>img\" src=\"<%= lessons[i].img_src%>\"></td>\r\n                                <td class=\"l click-td\" id=\"<%= lessons[i].id%>\"><%= lessons[i].title%></td>\r\n                            </tr>\r\n                            <%}%>\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div>\r\n                <div id=\"tests\" class=\"tab-pane fade\">\r\n                    <div id=\"table-content\" style=\"font-size: 17px\">\r\n                        <table class=\"table\">\r\n                            <tbody>\r\n                            <%for(var k = 1; k <= level; k++) {%>\r\n                            <tr>\r\n                                <td class=\"t gramm click-td\" id=\"<%=k%>\"><%=tests[k-1].title%></td>\r\n                            </tr>\r\n                            <%}%>\r\n                            </tbody>\r\n                        </table>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"alert alert-danger\"><strong>Увага!</strong>У вас немає вивчених слів!</div>\r\n    <footer id=\"brain-storm\">Brainstorm</footer>\r\n</div>");
-
+exports.Lost = ejs.compile("<h2><%=title%></h2>\r\n<div class=\"filters\">\r\n    <div class=\"d-flex flex-row-reverse mb-3\">\r\n        <% if(filter_distr) {%>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть район:</label>\r\n            <select id=\"district-select\" class=\"form-control district\" onchange=\"selectDistrict()\">\r\n                <option>Все</option>\r\n                <option>Шевченківський</option>\r\n                <option>Оболонський</option>\r\n                <option>Подільський</option>\r\n                <option>Дніпровський</option>\r\n            </select>\r\n            <script>\r\n                function selectDistrict() {\r\n                    var x = $(\"#district-select\").val();\r\n                    alert(x);\r\n                }\r\n            </script>\r\n        </div>\r\n        <% } %>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть тваринку:</label>\r\n            <select class=\"form-control typeOfAdv\">\r\n                <option>Все</option>\r\n                <option>Песик</option>\r\n                <option>Котик</option>\r\n                <option>Інше</option>\r\n            </select>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <% for(var i = 0; i<pet.length; i++) { %>\r\n    <div class=\"col-md-6 col-lg-4\">\r\n        <div class=\"card bg-light text-dark\">\r\n            <img class=\"card-img-top\" src=\"/static/Lapy.png\" alt=\"Your Pet\">\r\n            <div class=\"card-body\">\r\n                <h4 class=\"card-title\"><%=pet[i].name%></h4>\r\n                <p class=\"card-text\"><%=pet[i].text%></p>\r\n                <a href=\"#\" id=\"<%= pet[i].id%>\" class=\"btn btn-primary\">Відгукнутися</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <% } %>\r\n</div>");
 exports.PetCard = ejs.compile("<div class=\"col-md-6 col-lg-4\">\r\n    <div class=\"card bg-light text-dark\">\r\n        <!--<%= lessons[i].img_src%>-->\r\n        <img class=\"card-img-top\" src=\"/static/Lapy.png\" alt=\"Your Pet\">\r\n        <div class=\"card-body\">\r\n            <h4 class=\"card-title\"><%pet.name%></h4>\r\n            <p class=\"card-text\"><%pet.text%></p>\r\n            <a href=\"#\" class=\"btn btn-primary\">Відгукнутися</a>\r\n        </div>\r\n    </div>\r\n</div>");
 
 exports.Dictionary_Lesson = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div id=\"dict-container\">\r\n    <div class=\"progress\">\r\n        <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"<%= (numb+1)%>\" aria-valuemin=\"0\" aria-valuemax=\"<%= length%>\" style=\"width:<%= ((numb+1)/length)*100 %>%\"></div>\r\n    </div>\r\n    <h1 id=\"pl\"><%= word.pl%></h1>\r\n    <h6 class=\"trans\"><%= word.transcript%></h6>\r\n    <h2 id=\"uk\"><%= word.uk%></h2>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-left fa-2x\"></i></div>\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-right fa-2x\"></i></div>\r\n    </div>\r\n</div>");
@@ -52,13 +51,26 @@ $(function () {
     var Templates = require('./Templates');
 
      if(window.location.href.indexOf('home') !== -1) {
-        API.backendPost('/get_advertisements/', {}, function (err, data) {
-            if (!err)
-                alert(data);
+        API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialiseLost(data);
                 // Map.initialiseMap(data);
+            }
             else
                 alert("no data");
         });
+    }
+
+    function initialiseLost(data) {
+        var $temp = $('.content');
+        var $node;
+        $temp.html('');
+        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true, pet: data});
+        $node = $(lost);
+
+        $temp.append($node);
+        // addListener(data.level);
     }
 
     $('.btn-svg').each(function () {

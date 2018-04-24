@@ -5,13 +5,26 @@ $(function () {
     var Templates = require('./Templates');
 
      if(window.location.href.indexOf('home') !== -1) {
-        API.backendPost('/get_advertisements/', {}, function (err, data) {
-            if (!err)
-                alert(data);
+        API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialiseLost(data);
                 // Map.initialiseMap(data);
+            }
             else
                 alert("no data");
         });
+    }
+
+    function initialiseLost(data) {
+        var $temp = $('.content');
+        var $node;
+        $temp.html('');
+        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true, pet: data});
+        $node = $(lost);
+
+        $temp.append($node);
+        // addListener(data.level);
     }
 
     $('.btn-svg').each(function () {
