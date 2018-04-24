@@ -25,5 +25,5 @@ urlpatterns = [
     url('^signup/$', sign_up),
     url('^logout/$', sign_out),
     url('^post_adv/$', post_advertisement),
-    url('^advertisements/$', get_advertisements),
+    url('^get_advertisements/$', get_advertisements),
 ]
