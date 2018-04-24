@@ -85,12 +85,12 @@ $(function() {
         var pet = $('#typeOfPet').prop('selectedIndex');
         var district = $("#district").find('option:selected').text();
         var text = $('#descr').val();
-        var data = {
-            'type' : type,
-            'pet' : pet,
-            'district' : district,
-            'text' : text
-        };
+        var data = new FormData();
+        data.append('img', $('#img_file')[0].files[0]);
+        data.append('type', type);
+        data.append('pet', pet);
+        data.append('district', district);
+        data.append('text', text);
         API.backendPost('/post_adv/', data, function (err, data) {
              window.location.href='/home';
         })
