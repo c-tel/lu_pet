@@ -69,4 +69,4 @@ def post_advertisement(request):
 def get_advertisements(request):
     data = json.loads(request.body.decode('utf-8'))
     resp = Advertisement.ads_info(data)
-    return JsonResponse(resp)
+    return JsonResponse(resp, safe=False)

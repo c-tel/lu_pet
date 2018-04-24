@@ -66,7 +66,13 @@ class Advertisement(models.Model):
     def ads_info(filters_dict):
         ads = Advertisement.objects.all()
         ads.filter(**filters_dict).order_by('date_created')
-        return [vars(ad) for ad in list(ads)]
+        res = []
+        for ad in list(ads):
+            ad_dict = vars(ad)
+            del ad_dict['_state']
+            del ad_dict['date_created']
+            res.append(ad_dict)
+        return res
 
     @staticmethod
     def add(user, data):
