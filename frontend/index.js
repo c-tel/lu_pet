@@ -79,6 +79,23 @@ $(function() {
            window.location.href='/home';
        })
     });
+
+    $('#post_adv').on('click',function () {
+        var type = $('#typeOfAdv').prop('selectedIndex');
+        var pet = $('#typeOfPet').prop('selectedIndex');
+        var district = $("#district").find('option:selected').text();
+        var text = $('#descr').val();
+        var data = {
+            'type' : type,
+            'pet' : pet,
+            'district' : district,
+            'text' : text
+        };
+        alert(data['district']);
+        // API.backendPost('/post_adv/', null,function () {
+        //     window.location.href='/home';
+        // })
+    });
     $('#myModal').click(function () {
 
             // $('#modal_window').append(code);
