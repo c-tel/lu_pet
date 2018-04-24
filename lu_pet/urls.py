@@ -24,4 +24,6 @@ urlpatterns = [
     url('^login/$', sign_in),
     url('^signup/$', sign_up),
     url('^logout/$', sign_out),
+    url('^post_adv/$', post_advertisement),
+
 ]
