@@ -12,6 +12,16 @@ def default(request):
     return HttpResponsePermanentRedirect('/home')
 
 
+def contacts(request):
+    return render(request, 'contacts.html')
+
+
+def profile(request):
+    if request.user is None:
+        return HttpResponseRedirect('/welcome')
+    return render(request, 'profile.html')
+
+
 def main(request):
     username = request.user.username if request.user else 'user'
     return render(request, 'home.html', {'username': username})

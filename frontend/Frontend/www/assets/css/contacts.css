@@ -1,0 +1,82 @@
+.main_block{
+    width: 900px;
+    height: 100%;
+    background: url(../img/lapy.png);
+
+}
+
+.internal_unit{
+    margin-left: 10%;
+    margin-bottom: 8%;
+}
+
+.top_heading{
+    padding-top: 10%;
+    font-family: Century Gothic;
+}
+
+.main_line{
+background-color: black;
+    height: 3px;
+}
+
+.unit_first{
+    width: 100%;
+    height: 100px;
+    margin-left: 20%;
+}
+
+.unit_second{
+    width: 100%;
+    height: 100px;
+    margin-left: 2%;
+
+}
+
+.unit_third{
+    width: 100%;
+    height: 100px;
+    margin-left: 29%;
+
+}
+.heading{
+    font-family: helvetica;
+    font-size: 75px;
+    float: left;
+}
+
+.btn-warning{
+    margin-top: 4%;
+    margin-left: 3%;
+    border-radius: 100%;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.information{
+    font-family: Century Gothic;
+    font-size: 20px;
+    float: left;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    position: relative;
+}
+
+.mb-0{
+    font-family: Century Gothic;
+    font-size: 20px;
+    float: left;
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    position: relative;
+
+}
+
+.line{
+    background-color: #004d4d;
+    width: 100%;
+}

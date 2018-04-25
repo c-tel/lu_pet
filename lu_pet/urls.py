@@ -21,6 +21,8 @@ urlpatterns = [
     url('^$', default),
     url('^home/$', main),
     url('^welcome/$', welcome),
+    url('^contacts/$', contacts),
+    url('^profile/$', profile),
     url('^login/$', sign_in),
     url('^signup/$', sign_up),
     url('^logout/$', sign_out),

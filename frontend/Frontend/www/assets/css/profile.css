@@ -1,0 +1,117 @@
+.main_block{
+    width: 900px;
+    height: 100%;
+    background: url(../img/lapy.png);
+}
+
+.profile{
+    color: #547878;
+    font-family: Century Gothic;
+    padding-top: 30px;
+    margin-left: 30px;
+}
+.card{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 400px;
+
+}
+
+.card-body{
+    width: 100%;
+}
+
+.pfile{
+    display: block;
+}
+
+.pull-left{
+    width: 70px;
+    height:70px;
+    float: left;
+}
+.user_name{
+    width: 80%;
+    display: flex;
+    padding-top: 5%;
+    padding-left: 40px;
+    margin-left: 20px;
+    font-family: HIGENSON;
+}
+.menu-block{
+    margin-top: 30px;
+    margin-left:30px;
+    background-color: white;
+    padding: 4px;
+    width:800px;
+    height:100%;
+}
+
+.m_b{
+    margin-left:30px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.foto-block{
+    width: 45px;
+    height:45px;
+    margin-right: 5px;
+}
+.btn-outline-secondary{
+    margin-right: 7px;
+    border-color: #547878;
+    color:#547878;
+}
+
+.advertisement{
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: white;
+    padding: 4px;
+    width:800px;
+    height:300px;
+}
+
+.my_adver{
+    position-top:fixed;
+    margin-top: 15px;
+    margin-left:20px;
+    color: #496969;
+    font-family: Century Gothic;
+}
+
+.settings{
+    margin-left: 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 4px;
+    width:800px;
+    height:190px;
+}
+
+.checkbox-inline{
+    float: left;
+    margin-left: 30px;
+}
+.gap{
+    height: 50px;
+    width: 800px;
+}
+.btn-group-toggle{
+    float: left;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom:30px ;
+
+}
+
+.btn-lg{
+    background-color:#e60000 ;
+    border-color:#e60000 ;
+    margin-top: 30px;
+    margin-left: 40%;
+    margin-bottom: 60px;
+}

@@ -37,7 +37,7 @@ exports.backendGet = backendGet;
 var ejs = require('ejs');
 
 exports.Lost = ejs.compile("<h2><%=title%></h2>\r\n<div class=\"filters\">\r\n    <div class=\"d-flex flex-row-reverse mb-3\">\r\n        <% if(filter_distr) {%>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть район:</label>\r\n            <select id=\"district-select\" class=\"form-control district\">\r\n                <option>Все</option>\r\n                <option>Шевченківський</option>\r\n                <option>Оболонський</option>\r\n                <option>Подільський</option>\r\n                <option>Дніпровський</option>\r\n            </select>\r\n        </div>\r\n        <% } %>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть тваринку:</label>\r\n            <select id=\"pet-select\" class=\"form-control typeOfAdv\">\r\n                <option>Все</option>\r\n                <option>Песик</option>\r\n                <option>Котик</option>\r\n                <option>Інше</option>\r\n            </select>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div id=\"cards\" class=\"row\">\r\n</div>");
-exports.Card = ejs.compile("<% for(var i = 0; i<pet.length; i++) { %>\r\n<div class=\"col-md-6 col-lg-4\">\r\n    <div class=\"card bg-light text-dark\">\r\n        <img class=\"card-img-top\" src=\"/static/Lapy.png\" alt=\"Your Pet\">\r\n        <div class=\"card-body\">\r\n            <h4 class=\"card-title\"><%=pet[i].name%></h4>\r\n            <p><%= pet[i].district%> район</p>\r\n            <p class=\"card-text\"><%=pet[i].text%></p>\r\n            <a href=\"#\" id=\"<%= pet[i].id%>\" class=\"btn btn-primary\">Відгукнутися</a>\r\n        </div>\r\n    </div>\r\n</div>\r\n<% } %>");
+exports.Card = ejs.compile("<% for(var i = 0; i<pet.length; i++) { %>\r\n<div class=\"col-md-6 col-lg-4\">\r\n    <div class=\"card bg-light text-dark\">\r\n        <img class=\"card-img-top\" src=\"/static/<%=pet[i].id%>.jpg\" alt=\"Your Pet\">\r\n        <div class=\"card-body\">\r\n            <h4 class=\"card-title\"><%=pet[i].name%></h4>\r\n            <p><%= pet[i].district%> район</p>\r\n            <p class=\"card-text\"><%=pet[i].text%></p>\r\n            <a href=\"#\" id=\"<%= pet[i].id%>\" class=\"btn btn-primary\">Відгукнутися</a>\r\n        </div>\r\n    </div>\r\n</div>\r\n<% } %>");
 
 exports.Dictionary_Lesson = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div id=\"dict-container\">\r\n    <div class=\"progress\">\r\n        <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"<%= (numb+1)%>\" aria-valuemin=\"0\" aria-valuemax=\"<%= length%>\" style=\"width:<%= ((numb+1)/length)*100 %>%\"></div>\r\n    </div>\r\n    <h1 id=\"pl\"><%= word.pl%></h1>\r\n    <h6 class=\"trans\"><%= word.transcript%></h6>\r\n    <h2 id=\"uk\"><%= word.uk%></h2>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-left fa-2x\"></i></div>\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-right fa-2x\"></i></div>\r\n    </div>\r\n</div>");
 exports.Grammar_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n<div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl\"><%= tests.sentence%></h1>\r\n        <h4 id=\"uk\">(<%= tests.trans%>)</h4>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
@@ -60,7 +60,9 @@ $(function () {
             else
                 alert("no data");
         });
-    }
+    } else if (window.location.href.indexOf('profile') !== -1) {
+         alert("profile");
+     }
 
     var Pet = {
          "Песик": 0,
@@ -143,7 +145,13 @@ $(function () {
     //     });
     // });
 
-    $('#exit').on('click', function () {
+    $('#contacts').click(function () {
+        window.location.href = '/contacts';
+    });
+    $('#profile').click(function () {
+        window.location.href = '/profile';
+    });
+    $('#exit').click(function () {
         API.backendPost('/logout/', null, function () {
             window.location.href = '/home';
         })
