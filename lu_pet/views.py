@@ -13,7 +13,7 @@ def default(request):
 
 
 def contacts(request):
-    return render(request, 'contacts.html')
+    return render(request, 'Contacts.html')
 
 
 def profile(request):
