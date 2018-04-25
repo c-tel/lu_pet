@@ -60,7 +60,9 @@ $(function () {
             else
                 alert("no data");
         });
-    }
+    } else if (window.location.href.indexOf('profile') !== -1) {
+         alert("profile");
+     }
 
     var Pet = {
          "Песик": 0,
@@ -143,7 +145,13 @@ $(function () {
     //     });
     // });
 
-    $('#exit').on('click', function () {
+    $('#contacts').click(function () {
+        window.location.href = '/contacts';
+    });
+    $('#profile').click(function () {
+        window.location.href = '/profile';
+    });
+    $('#exit').click(function () {
         API.backendPost('/logout/', null, function () {
             window.location.href = '/home';
         })

@@ -21,7 +21,7 @@ button {
   min-height: 100vh;
   width: 100%;
   justify-content: center;
-  background: #dce2f2;
+  background: #e4dff2;
   .logo{
     position: fixed;
     top: 0;
@@ -41,9 +41,6 @@ button {
     width: @menu-width;
     height: 100%;
     background-color: #1c1d22;
-    .menu-curr {
-      visibility: visible;
-    }
     .menu__level {
       position: absolute;
       top: 0;
@@ -57,13 +54,21 @@ button {
         display: block;
       }
       a {
+        font-size: 17px;
         font-weight: 600;
         position: relative;
         display: block;
         padding: 1em;
         color: #d1d1d1;
-        -webkit-transition: color 0.1s;
-        transition: color 0.1s;
+        text-decoration: none;
+      }
+      a:hover {
+        background-color: rgba(131, 102, 187, 0.28);
+      }
+
+      a.active {
+        background-color: #F0F7D4;
+        color: #347B98;
       }
     }
   }
