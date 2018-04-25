@@ -64,8 +64,7 @@ def sign_out(request):
 @csrf_exempt
 def post_advertisement(request):
     if request.method == 'POST':
-        data = json.loads(request.body.decode('utf-8'))
-        Advertisement.add(user=request.user, data=data)
+        Advertisement.add(user=request.user, data=request.POST, img=request.FILES['img'])
     return JsonResponse({'status': 'ok'})
 
 
