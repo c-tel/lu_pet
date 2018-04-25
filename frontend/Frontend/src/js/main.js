@@ -1,5 +1,4 @@
 $(function () {
-    // var Map = require("./map");
     var Welcome = require('./welcome.js');
     var API = require('./API');
     var Templates = require('./Templates');
@@ -8,8 +7,7 @@ $(function () {
         API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
             if (!err) {
                 console.log(JSON.stringify(data));
-                initialiseLost(data);
-                // Map.initialiseMap(data);
+                initialise(data, 'Загублені тварини', true);
             }
             else
                 alert("no data");
@@ -18,37 +16,90 @@ $(function () {
          alert("profile");
      }
 
+    $('#lost').click(function () {
+        API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Загублені тварини', true);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#found').click(function () {
+        API.backendPost('/get_advertisements/', {type: 1}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Знайдені тварини', true);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#good-hands').click(function () {
+        API.backendPost('/get_advertisements/', {type: 2}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Добрі руки', false);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#contacts').click(function () {
+        window.location.href = '/contacts';
+    });
+    $('#profile').click(function () {
+        window.location.href = '/profile';
+    });
+    $('#exit').click(function () {
+        API.backendPost('/logout/', null, function () {
+            window.location.href = '/home';
+        })
+    });
+
     var Pet = {
          "Песик": 0,
         "Котик": 1,
         "Інше": 2
     };
+    var Type = {
+        'Загублені тварини': 0,
+        'Знайдені тварини': 1,
+        'Добрі руки': 2
+    };
 
-    function initialiseLost(data) {
+    function initialise(data, t, district) {
         var $temp = $('.content');
         var $node;
         var $card;
         $temp.html('');
 
-        var card = Templates.Card({pet: data});
-        $card = $(card);
-        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true});
+        var lost = Templates.Lost({title: t, filter_distr: district, type: data.type});
         $node = $(lost);
-
         $temp.append($node);
-        $("#cards").html($card);
-        addListeners();
+        if(data) {
+            var card = Templates.Card({pet: data});
+            $card = $(card);
+            $("#cards").html($card);
+            addListeners();
+        }
+
     }
-    function changeLost(data) {
+    function change(data) {
         var $temp = $('#cards');
-        var card = Templates.Card({pet: data});
-        $temp.html($(card));
+        if(data) {
+            var card = Templates.Card({pet: data});
+            $temp.html($(card));
+        }
+        else
+            $temp.html('<div>Оголошень немає</div>');
     }
 
     function addListeners() {
 
         function updateFilters() {
-            var res = {'type' : 0};
+            var res = {'type' : Type[$('#title').text()]};
             var distr = $("#district-select").val();
             var pet = $("#pet-select").val();
             if (distr !== "Все")
@@ -58,7 +109,7 @@ $(function () {
 
             API.backendPost('/get_advertisements/', res, function (err, data) {
                 if (!err) {
-                    changeLost(data);
+                    change(data);
                 }
                 else
                     alert("no data");
@@ -91,25 +142,6 @@ $(function () {
         });
     });
 
-    // $("#myInput").on("keyup", function() {
-    //     alert("fff");
-    //     var value = $(this).val().toLowerCase();
-    //     $(".row").filter(function() {
-    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //     });
-    // });
-
-    $('#contacts').click(function () {
-        window.location.href = '/contacts';
-    });
-    $('#profile').click(function () {
-        window.location.href = '/profile';
-    });
-    $('#exit').click(function () {
-        API.backendPost('/logout/', null, function () {
-            window.location.href = '/home';
-        })
-    });
 
     $('#post_adv').on('click', function () {
         var type = $('#typeOfAdv').prop('selectedIndex');
@@ -144,12 +176,4 @@ $(function () {
         //     $('#modal_window').html('');
         // });
     });
-    // $('#drop').on('click', function () {
-    //     API.backendPost('/api/drop/', {}, function (err, data) {
-    //         API.backendPost('/api/init/', {}, function (err, data) {
-    //             if (!err)
-    //                 Map.initialiseMap(data);
-    //         });
-    //     });
-    // });
 });
