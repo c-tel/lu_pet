@@ -27,11 +27,13 @@
 		<form class="login-form">
 			<h2 class="title">Welcome</h2>
 			<h2 class="title">LoGo</h2>
+			<div class="error text-danger" style="visibility: hidden">Заповніть всі поля!</div>
+			<h6 id="error" class="text-danger" style="visibility: hidden; margin-top: 0">Неправильний логін або пароль. Спробуйте ще раз або зареєструйтеся.</h6>
 			<div class="validate">
 				<input type="text" class="form-control" id="signin-username" placeholder="Логін" required>
 			</div>
 			<div class="validate">
-			    <input type="text" class="form-control" id='signin-password' placeholder="Пароль" required>
+			    <input type="password" class="form-control" id='signin-password' placeholder="Пароль" required>
 		    </div>
 		</form>
 			<div class="butt">
@@ -43,12 +45,14 @@
 			<form class="login-form">
 				<h2 class="title">Welcome</h2>
 				<h2 class="title">LoGo</h2>
+				<div class="error text-danger" style="visibility: hidden">Заповніть всі поля!</div>
 				<div class="validate">
 					<input type="text" class="form-control" id="signup-email" placeholder="Пошта" required>
 				</div>
 				<div class="validate">
 					<input type="text" class="form-control" id='signup-name' type="text" placeholder="Логін" required>
 				</div>
+				<div class="danger text-danger" style="visibility: hidden">Already taken.</div>
 				<div class="validate">
 					<input type="text" class="form-control" id='signup-password' placeholder="Пароль" required>
 				</div>

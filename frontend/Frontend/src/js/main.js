@@ -13,7 +13,7 @@ $(function () {
                 alert("no data");
         });
     } else if (window.location.href.indexOf('profile') !== -1) {
-         alert("profile");
+
      }
 
     $('#lost').click(function () {
@@ -169,6 +169,7 @@ $(function () {
             }
         });
     });
+// <a href="#" id="<%= pet[i].id%>" id="<%= pet.id%>" class="btn btn-primary feedback">Відгукнутися</a>
     $('#myModal').click(function () {
 
         // $('#modal_window').append(code);
