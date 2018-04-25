@@ -71,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Frontend/src/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state relative-caret-position="89">
+              <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -91,11 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Card.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Card.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Frontend/templates/Card.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+            <state relative-caret-position="153">
+              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -181,10 +181,10 @@
         <option value="$PROJECT_DIR$/Frontend/www/assets/less/home.less" />
         <option value="$PROJECT_DIR$/Frontend/templates/Lessons_Map.ejs" />
         <option value="$PROJECT_DIR$/Frontend/www/home.html" />
-        <option value="$PROJECT_DIR$/Frontend/templates/Card.ejs" />
         <option value="$PROJECT_DIR$/Frontend/src/js/Templates.js" />
         <option value="$PROJECT_DIR$/Frontend/templates/Lost.ejs" />
         <option value="$PROJECT_DIR$/Frontend/src/js/main.js" />
+        <option value="$PROJECT_DIR$/Frontend/templates/Card.ejs" />
       </list>
     </option>
   </component>
@@ -365,12 +365,12 @@
       <workItem from="1524531313868" duration="7547000" />
       <workItem from="1524553767023" duration="5911000" />
       <workItem from="1524563796281" duration="1220000" />
-      <workItem from="1524601562023" duration="14875000" />
+      <workItem from="1524601562023" duration="15674000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266332000" />
+    <option name="totallyTimeSpent" value="267131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -685,14 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Frontend/templates/Card.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/www/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -731,8 +723,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Frontend/src/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        <state relative-caret-position="89">
+          <caret line="120" column="16" lean-forward="true" selection-start-line="120" selection-start-column="16" selection-end-line="120" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Frontend/templates/Card.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
           <folding />
         </state>
       </provider>
