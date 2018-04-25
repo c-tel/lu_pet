@@ -171,11 +171,9 @@ $(function () {
             contentType: false,
             type: 'POST',
             success: function(data){
-                alert(data);
+                window.location.href = '/home';
             }
         });
-
-        reader.readAsBinaryString(imgfile)
     });
     $('#myModal').click(function () {
 
