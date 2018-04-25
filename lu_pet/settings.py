@@ -123,6 +123,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "frontend/Frontend/www/assets/less"),
+    os.path.join(BASE_DIR, "frontend/Frontend/www/assets/css"),
     os.path.join(BASE_DIR, "frontend/Frontend/www/assets/images"),
     os.path.join(BASE_DIR, "frontend")
 )
