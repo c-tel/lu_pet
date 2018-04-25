@@ -90,41 +90,30 @@ $(function () {
     }
 
     function addListeners() {
-        $("#district-select").change(function () {
-            var x = $("#district-select").val();
-            var res1 = {};
-            if($("#pet-select").val() !== "Все")
-                res1['pet'] = Pet[$("#pet-select").val()];
-            if(x !== "Все")
-                res1['district'] = x;
-            res1['type'] = 0;
 
-            API.backendPost('/get_advertisements/', res1, function (err, data) {
-                if (!err) {
-                    console.log(JSON.stringify(data));
-                    changeLost(data);
-                }
-                else
-                    alert("no data");
-            });
-        });
-        $("#pet-select").change(function () {
-            var x = Pet[$("#pet-select").val()];
-            var res = {};
+        function updateFilters() {
+            var res = {'type' : 0};
+            var distr = $("#district-select").val();
+            var pet = $("#pet-select").val();
+            if (distr !== "Все")
+                res['district'] = distr;
+            if (pet !== "Все")
+                res['pet'] = Pet[pet];
 
-            if(x !== "Все")
-                res['pet'] = x;
-            if($("#district-select").val() !== "Все")
-                res['district'] = x$("#district-select").val();
-            res['type'] = 0;
             API.backendPost('/get_advertisements/', res, function (err, data) {
                 if (!err) {
-                    console.log(JSON.stringify(data));
                     changeLost(data);
                 }
                 else
                     alert("no data");
             });
+        }
+
+        $("#district-select").change(function () {
+            updateFilters()
+        });
+        $("#pet-select").change(function () {
+            updateFilters();
         });
     }
 
@@ -167,21 +156,24 @@ $(function () {
         var name = $('#name').val();
         var text = $('#descr').val();
         var imgfile = $('#img_file')[0].files[0];
-        var reader = new FileReader();
-        reader.onload = function () {
-            var img = reader.result;
-            var data = {
-                'img': img,
-                'type': type,
-                'pet': pet,
-                'district': district,
-                'name': name,
-                'text': text
-            };
-            API.backendPost('/post_adv/', data, function (err, data) {
-                window.location.href = '/home';
-            })
-        };
+        var fd = new FormData();
+        fd.append('img', imgfile);
+        fd.append('text', text);
+        fd.append('pet', pet);
+        fd.append('district', district);
+        fd.append('type', type);
+        fd.append('name', name);
+
+        $.ajax({
+            url: '/post_adv/',
+            data: fd,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+                alert(data);
+            }
+        });
 
         reader.readAsBinaryString(imgfile)
     });
