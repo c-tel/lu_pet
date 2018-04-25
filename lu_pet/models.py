@@ -87,7 +87,7 @@ class Advertisement(models.Model):
         adv = Advertisement.objects.create(author=user, text=data['text'], type=data['type'],
                                            pet=data['pet'], district=data['district'], name=data['name'])
         adv.save()
-        with open('{}.jpg'.format(adv.pk), 'wb+') as destination:
+        with open('frontend/Frontend/www/assets/images/{}.jpg'.format(adv.pk), 'wb+') as destination:
             for chunk in img.chunks():
                 destination.write(chunk)
 
