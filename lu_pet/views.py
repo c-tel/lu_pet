@@ -3,6 +3,8 @@ import json
 from lu_pet.models import *
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
+from lu_pet.settings import EMAIL_HOST_USER
 
 
 # pages
@@ -25,11 +27,13 @@ def welcome(request):
 @csrf_exempt
 def sign_up(request):
     if request.method == 'POST':
-        dict = json.loads(request.body.decode('utf-8'))
-        username = dict['username']
-        password = dict['password']
+        data = json.loads(request.body.decode('utf-8'))
+        username = data['username']
+        password = data['password']
+        email = data['email']
+        allow_dispatch = data['email_dispatch']
         if not User.objects.filter(username=username).exists():
-            add_user(username, password)
+            add_user(username, password, email, allow_dispatch)
             key = Session.objects.authentificate(username, password)
             response = JsonResponse({'status': 'ok'})
             response.set_cookie('sessid', key)
@@ -78,3 +82,7 @@ def post_feedback(request):
         data = json.loads(request.body.decode('utf-8'))
         Feedback.add(text=data['text'], contacts=data['contacts'], adv_id=data['adv_id'])
     return JsonResponse({'status': 'ok'})
+
+
+def authorised(request):
+    return JsonResponse({'auth': request.user is not None})

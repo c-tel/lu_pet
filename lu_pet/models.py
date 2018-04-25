@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 import random
 import string
+from django.core.mail import send_mail
+from lu_pet.settings import EMAIL_HOST_USER
 
 
 class SessionManager(models.Manager):
@@ -10,7 +12,6 @@ class SessionManager(models.Manager):
         if User.objects.filter(username=username).exists():
             user = User.objects.get(username=username)
             if user.check_password(password):
-                print('checked')
                 session = Session()
                 session.user = user
                 session.key = "".join(random.choice(string.ascii_letters) for _ in range(64))
@@ -29,9 +30,16 @@ class Session(models.Model):
     objects = SessionManager()
 
 
-def add_user(username, password):
-    user = User.objects.create_user(username=username, password=password)
+def add_user(username, password, email, allow_dispatch):
+    user = User.objects.create_user(username=username, password=password, email=email)
     user.save()
+    disp = Dispatch.objects.create(allow=allow_dispatch, user=user)
+    disp.save()
+
+
+class Dispatch(models.Model):
+    allow = models.BooleanField(default=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
 class Advertisement(models.Model):
@@ -65,7 +73,6 @@ class Advertisement(models.Model):
     @staticmethod
     def ads_info(filters_dict):
         ads = Advertisement.objects.all()
-        print(filters_dict)
         ads = ads.filter(**filters_dict).order_by('date_created')
         res = []
         for ad in list(ads)[::-1]:
@@ -90,8 +97,13 @@ class Feedback(models.Model):
     @staticmethod
     def add(text, contacts, adv_id):
         ad = Advertisement.objects.get(pk=adv_id)
+        adv_author = ad.author
         fb = Feedback.objects.create(text=text, contacts=contacts, adv=ad)
         fb.save()
+        if Dispatch.objects.get(user=adv_author).allow:
+            send_mail('Відгук на обʼяву про тваринку  {}'.format(ad.name),
+                      '{0}\n Контакти: {1}'.format(text, contacts), EMAIL_HOST_USER,
+                      [adv_author.email], fail_silently=False)
 
 
 def generate_key():
