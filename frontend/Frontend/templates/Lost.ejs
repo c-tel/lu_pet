@@ -4,24 +4,18 @@
         <% if(filter_distr) {%>
         <div class="form-group">
             <label for="exampleSelect1">Виберіть район:</label>
-            <select id="district-select" class="form-control district" onchange="selectDistrict()">
+            <select id="district-select" class="form-control district">
                 <option>Все</option>
                 <option>Шевченківський</option>
                 <option>Оболонський</option>
                 <option>Подільський</option>
                 <option>Дніпровський</option>
             </select>
-            <script>
-                function selectDistrict() {
-                    var x = $("#district-select").val();
-                    alert(x);
-                }
-            </script>
         </div>
         <% } %>
         <div class="form-group">
             <label for="exampleSelect1">Виберіть тваринку:</label>
-            <select class="form-control typeOfAdv">
+            <select id="pet-select" class="form-control typeOfAdv">
                 <option>Все</option>
                 <option>Песик</option>
                 <option>Котик</option>
@@ -30,17 +24,5 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <% for(var i = 0; i<pet.length; i++) { %>
-    <div class="col-md-6 col-lg-4">
-        <div class="card bg-light text-dark">
-            <img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
-            <div class="card-body">
-                <h4 class="card-title"><%=pet[i].name%></h4>
-                <p class="card-text"><%=pet[i].text%></p>
-                <a href="#" id="<%= pet[i].id%>" class="btn btn-primary">Відгукнутися</a>
-            </div>
-        </div>
-    </div>
-    <% } %>
+<div id="cards" class="row">
 </div>

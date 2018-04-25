@@ -16,15 +16,70 @@ $(function () {
         });
     }
 
+    var Pet = {
+         "Песик": 0,
+        "Котик": 1,
+        "Інше": 2
+    };
+
     function initialiseLost(data) {
         var $temp = $('.content');
         var $node;
+        var $card;
         $temp.html('');
-        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true, pet: data});
+
+        var card = Templates.Card({pet: data});
+        $card = $(card);
+        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true});
         $node = $(lost);
 
         $temp.append($node);
-        // addListener(data.level);
+        $("#cards").html($card);
+        addListeners();
+    }
+    function changeLost(data) {
+        var $temp = $('#cards');
+        var card = Templates.Card({pet: data});
+        $temp.html($(card));
+    }
+
+    function addListeners() {
+        $("#district-select").change(function () {
+            var x = $("#district-select").val();
+            var res1 = {};
+            if($("#pet-select").val() !== "Все")
+                res1['pet'] = Pet[$("#pet-select").val()];
+            if(x !== "Все")
+                res1['district'] = x;
+            res1['type'] = 0;
+
+            API.backendPost('/get_advertisements/', res1, function (err, data) {
+                if (!err) {
+                    console.log(JSON.stringify(data));
+                    changeLost(data);
+                }
+                else
+                    alert("no data");
+            });
+        });
+        $("#pet-select").change(function () {
+            var x = Pet[$("#pet-select").val()];
+            var res = {};
+
+            if(x !== "Все")
+                res['pet'] = x;
+            if($("#district-select").val() !== "Все")
+                res['district'] = x$("#district-select").val();
+            res['type'] = 0;
+            API.backendPost('/get_advertisements/', res, function (err, data) {
+                if (!err) {
+                    console.log(JSON.stringify(data));
+                    changeLost(data);
+                }
+                else
+                    alert("no data");
+            });
+        });
     }
 
     $('.btn-svg').each(function () {

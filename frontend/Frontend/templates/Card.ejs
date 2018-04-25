@@ -1,0 +1,13 @@
+<% for(var i = 0; i<pet.length; i++) { %>
+<div class="col-md-6 col-lg-4">
+    <div class="card bg-light text-dark">
+        <img class="card-img-top" src="/static/Lapy.png" alt="Your Pet">
+        <div class="card-body">
+            <h4 class="card-title"><%=pet[i].name%></h4>
+            <p><%= pet[i].district%> район</p>
+            <p class="card-text"><%=pet[i].text%></p>
+            <a href="#" id="<%= pet[i].id%>" class="btn btn-primary">Відгукнутися</a>
+        </div>
+    </div>
+</div>
+<% } %>
