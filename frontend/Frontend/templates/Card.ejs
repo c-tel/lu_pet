@@ -6,7 +6,40 @@
             <h4 class="card-title"><%=pet[i].name%></h4>
             <p><%= pet[i].district%> район</p>
             <p class="card-text"><%=pet[i].text%></p>
-            <a href="#" id="<%= pet[i].id%>" class="btn btn-primary">Відгукнутися</a>
+            <button id="<%= pet[i].id%>" id="<%= pet.id%>"  class="btn btn-svg" data-toggle="modal" data-target="#myModal<%= pet[i].id%>">
+                Відгукнутися
+            </button>
+
+        </div>
+    </div>
+</div>
+<!-- The Modal -->
+<div class="modal fade" id="myModal<%= pet[i].id%>">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Відгукнутися</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Ваші контакти: </label>
+                        <input type="text" class="form-control" id="name"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Ваш відгук:</label>
+                        <textarea class="form-control" id="descr" rows="3"></textarea>
+                    </div>
+                </form>
+                <button id="post_adv" class="btn btn-primary">Відправити</button>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>

@@ -36,16 +36,14 @@ exports.backendGet = backendGet;
 
 var ejs = require('ejs');
 
-exports.Lost = ejs.compile("<h2><%=title%></h2>\r\n<div class=\"filters\">\r\n    <div class=\"d-flex flex-row-reverse mb-3\">\r\n        <% if(filter_distr) {%>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть район:</label>\r\n            <select id=\"district-select\" class=\"form-control district\">\r\n                <option>Все</option>\r\n                <option>Шевченківський</option>\r\n                <option>Оболонський</option>\r\n                <option>Подільський</option>\r\n                <option>Дніпровський</option>\r\n            </select>\r\n        </div>\r\n        <% } %>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть тваринку:</label>\r\n            <select id=\"pet-select\" class=\"form-control typeOfAdv\">\r\n                <option>Все</option>\r\n                <option>Песик</option>\r\n                <option>Котик</option>\r\n                <option>Інше</option>\r\n            </select>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div id=\"cards\" class=\"row\">\r\n</div>");
-exports.Card = ejs.compile("<% for(var i = 0; i<pet.length; i++) { %>\r\n<div class=\"col-md-6 col-lg-4\">\r\n    <div class=\"card bg-light text-dark\">\r\n        <img class=\"card-img-top\" src=\"/static/<%=pet[i].id%>.jpg\" alt=\"Your Pet\">\r\n        <div class=\"card-body\">\r\n            <h4 class=\"card-title\"><%=pet[i].name%></h4>\r\n            <p><%= pet[i].district%> район</p>\r\n            <p class=\"card-text\"><%=pet[i].text%></p>\r\n            <a href=\"#\" id=\"<%= pet[i].id%>\" class=\"btn btn-primary\">Відгукнутися</a>\r\n        </div>\r\n    </div>\r\n</div>\r\n<% } %>");
+exports.Lost = ejs.compile("<h2 id=\"title\"><%=title%></h2>\r\n<div class=\"filters\">\r\n    <div class=\"d-flex flex-row-reverse mb-3\">\r\n        <% if(filter_distr) {%>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть район:</label>\r\n            <select id=\"district-select\" class=\"form-control district\">\r\n                <option>Все</option>\r\n                <option>Шевченківський</option>\r\n                <option>Оболонський</option>\r\n                <option>Подільський</option>\r\n                <option>Дніпровський</option>\r\n            </select>\r\n        </div>\r\n        <% } %>\r\n        <div class=\"form-group\">\r\n            <label for=\"exampleSelect1\">Виберіть тваринку:</label>\r\n            <select id=\"pet-select\" class=\"form-control typeOfAdv\">\r\n                <option>Все</option>\r\n                <option>Песик</option>\r\n                <option>Котик</option>\r\n                <option>Інше</option>\r\n            </select>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div id=\"cards\" class=\"row\">\r\n    <div>Оголошень немає</div>\r\n</div>");
+exports.Card = ejs.compile("<% for(var i = 0; i<pet.length; i++) { %>\r\n<div class=\"col-md-6 col-lg-4\">\r\n    <div class=\"card bg-light text-dark\">\r\n        <img class=\"card-img-top\" src=\"/static/<%=pet[i].id%>.jpg\" alt=\"Your Pet\">\r\n        <div class=\"card-body\">\r\n            <h4 class=\"card-title\"><%=pet[i].name%></h4>\r\n            <p><%= pet[i].district%> район</p>\r\n            <p class=\"card-text\"><%=pet[i].text%></p>\r\n            <button id=\"<%= pet[i].id%>\" id=\"<%= pet.id%>\"  class=\"btn btn-svg\" data-toggle=\"modal\" data-target=\"#myModal<%= pet[i].id%>\">\r\n                Відгукнутися\r\n            </button>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- The Modal -->\r\n<div class=\"modal fade\" id=\"myModal<%= pet[i].id%>\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <!-- Modal Header -->\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">Відгукнутися</h4>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>\r\n            </div>\r\n            <!-- Modal body -->\r\n            <div class=\"modal-body\">\r\n                <form>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"exampleTextarea\">Ваші контакти: </label>\r\n                        <input type=\"text\" class=\"form-control\" id=\"name\"></input>\r\n                    </div>\r\n                    <div class=\"form-group\">\r\n                        <label for=\"exampleTextarea\">Ваш відгук:</label>\r\n                        <textarea class=\"form-control\" id=\"descr\" rows=\"3\"></textarea>\r\n                    </div>\r\n                </form>\r\n                <button id=\"post_adv\" class=\"btn btn-primary\">Відправити</button>\r\n            </div>\r\n            <!-- Modal footer -->\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<% } %>");
 
 exports.Dictionary_Lesson = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div id=\"dict-container\">\r\n    <div class=\"progress\">\r\n        <div class=\"progress-bar progress-bar-striped active\" role=\"progressbar\" aria-valuenow=\"<%= (numb+1)%>\" aria-valuemin=\"0\" aria-valuemax=\"<%= length%>\" style=\"width:<%= ((numb+1)/length)*100 %>%\"></div>\r\n    </div>\r\n    <h1 id=\"pl\"><%= word.pl%></h1>\r\n    <h6 class=\"trans\"><%= word.transcript%></h6>\r\n    <h2 id=\"uk\"><%= word.uk%></h2>\r\n    <div class=\"row\">\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-left fa-2x\"></i></div>\r\n        <div class=\"col-xs-6\"><i class=\"fa fa-arrow-right fa-2x\"></i></div>\r\n    </div>\r\n</div>");
-exports.Grammar_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n<div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl\"><%= tests.sentence%></h1>\r\n        <h4 id=\"uk\">(<%= tests.trans%>)</h4>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
 exports.Dictionary_Test = ejs.compile("<header id=\"header-title\"><h1 class=\"brown text-center\"><%= title%></h1></header>\r\n<div class=\"row\">\r\n    <div class=\"col-xs-offset-1 col-xs-2\"><i class=\"fa fa-arrow-circle-o-left fa-3x back-to-map\"></i></div>\r\n</div>\r\n<div class=\"test-container\">\r\n    <h3 id=\"instruction\">Виберіть правильний варіант:</h3>\r\n    <div class=\"test\">\r\n        <h1 id=\"pl-word\"><%= tests.word%></h1>\r\n        <h5 id=\"help-block\" style=\"visibility: hidden\">Неправильна відповідь. Спробуйте ще раз :)</h5>\r\n        <form class=\"variants\">\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"0\"><%= tests.variants[0]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"1\"><%= tests.variants[1]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"2\"><%= tests.variants[2]%></label>\r\n            </div>\r\n            <div class=\"radio\">\r\n                <label><input type=\"radio\" name=\"optradio\" id=\"3\"><%= tests.variants[3]%></label>\r\n            </div>\r\n        </form>\r\n        <div class=\"row\">\r\n            <div class=\"col-xs-5\" style=\"text-align: right\"><button class=\"btn btn-default\" id=\"prev-test\"><i class=\"fa fa-arrow-left\"></i> Назад</button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"check-test\">Перевірити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n            <div class=\"col-xs-offset-2 col-xs-5\" style=\"text-align: left\"><button class=\"btn btn-default\" id=\"finish-test\" style=\"display: none;\">Завершити <i class=\"fa fa-arrow-right\"></i></button></div>\r\n        </div>\r\n    </div>\r\n</div>");
 exports.Info = ejs.compile("<div id=\"infograph\">\r\n    <h4 id=\"label\">Скільки слів ви вивчили за сьогодні?</h4>\r\n    <h2><span id=\"number\"><%=count%></span></h2>\r\n    <!--<div id=\"shareBtn\" class=\"btn btn-success clearfix\">Share</div>-->\r\n    <button id=\"close\" class=\"btn btn-default\">Ok</button>\r\n</div>\r\n\r\n<div id=\"back\"></div>\r\n<!--<script>-->\r\n    <!--window.fbAsyncInit = function() {-->\r\n        <!--FB.init({-->\r\n            <!--appId            : '408371692927964',-->\r\n            <!--autoLogAppEvents : true,-->\r\n            <!--xfbml            : true,-->\r\n            <!--version          : 'v2.11'-->\r\n        <!--});-->\r\n    <!--};-->\r\n\r\n    <!--(function(d, s, id){-->\r\n        <!--var js, fjs = d.getElementsByTagName(s)[0];-->\r\n        <!--if (d.getElementById(id)) {return;}-->\r\n        <!--js = d.createElement(s); js.id = id;-->\r\n        <!--js.src = \"https://connect.facebook.net/en_US/sdk.js\";-->\r\n        <!--fjs.parentNode.insertBefore(js, fjs);-->\r\n    <!--}(document, 'script', 'facebook-jssdk'));-->\r\n<!--</script>-->");
 },{"ejs":6}],3:[function(require,module,exports){
 $(function () {
-    // var Map = require("./map");
     var Welcome = require('./welcome.js');
     var API = require('./API');
     var Templates = require('./Templates');
@@ -54,47 +52,99 @@ $(function () {
         API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
             if (!err) {
                 console.log(JSON.stringify(data));
-                initialiseLost(data);
-                // Map.initialiseMap(data);
+                initialise(data, 'Загублені тварини', true);
             }
             else
                 alert("no data");
         });
     } else if (window.location.href.indexOf('profile') !== -1) {
-         alert("profile");
+
      }
+
+    $('#lost').click(function () {
+        API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Загублені тварини', true);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#found').click(function () {
+        API.backendPost('/get_advertisements/', {type: 1}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Знайдені тварини', true);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#good-hands').click(function () {
+        API.backendPost('/get_advertisements/', {type: 2}, function (err, data) {
+            if (!err) {
+                console.log(JSON.stringify(data));
+                initialise(data, 'Добрі руки', false);
+            }
+            else
+                alert("no data");
+        });
+    });
+    $('#contacts').click(function () {
+        window.location.href = '/contacts';
+    });
+    $('#profile').click(function () {
+        window.location.href = '/profile';
+    });
+    $('#exit').click(function () {
+        API.backendPost('/logout/', null, function () {
+            window.location.href = '/home';
+        })
+    });
 
     var Pet = {
          "Песик": 0,
         "Котик": 1,
         "Інше": 2
     };
+    var Type = {
+        'Загублені тварини': 0,
+        'Знайдені тварини': 1,
+        'Добрі руки': 2
+    };
 
-    function initialiseLost(data) {
+    function initialise(data, t, district) {
         var $temp = $('.content');
         var $node;
         var $card;
         $temp.html('');
 
-        var card = Templates.Card({pet: data});
-        $card = $(card);
-        var lost = Templates.Lost({title:'Загублені тварини', filter_distr: true});
+        var lost = Templates.Lost({title: t, filter_distr: district, type: data.type});
         $node = $(lost);
-
         $temp.append($node);
-        $("#cards").html($card);
-        addListeners();
+        if(data) {
+            var card = Templates.Card({pet: data});
+            $card = $(card);
+            $("#cards").html($card);
+            addListeners();
+        }
+
     }
-    function changeLost(data) {
+    function change(data) {
         var $temp = $('#cards');
-        var card = Templates.Card({pet: data});
-        $temp.html($(card));
+        if(data) {
+            var card = Templates.Card({pet: data});
+            $temp.html($(card));
+        }
+        else
+            $temp.html('<div>Оголошень немає</div>');
     }
 
     function addListeners() {
 
         function updateFilters() {
-            var res = {'type' : 0};
+            var res = {'type' : Type[$('#title').text()]};
             var distr = $("#district-select").val();
             var pet = $("#pet-select").val();
             if (distr !== "Все")
@@ -104,7 +154,7 @@ $(function () {
 
             API.backendPost('/get_advertisements/', res, function (err, data) {
                 if (!err) {
-                    changeLost(data);
+                    change(data);
                 }
                 else
                     alert("no data");
@@ -137,25 +187,6 @@ $(function () {
         });
     });
 
-    // $("#myInput").on("keyup", function() {
-    //     alert("fff");
-    //     var value = $(this).val().toLowerCase();
-    //     $(".row").filter(function() {
-    //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    //     });
-    // });
-
-    $('#contacts').click(function () {
-        window.location.href = '/contacts';
-    });
-    $('#profile').click(function () {
-        window.location.href = '/profile';
-    });
-    $('#exit').click(function () {
-        API.backendPost('/logout/', null, function () {
-            window.location.href = '/home';
-        })
-    });
 
     $('#post_adv').on('click', function () {
         var type = $('#typeOfAdv').prop('selectedIndex');
@@ -183,6 +214,7 @@ $(function () {
             }
         });
     });
+// <a href="#" id="<%= pet[i].id%>" id="<%= pet.id%>" class="btn btn-primary feedback">Відгукнутися</a>
     $('#myModal').click(function () {
 
         // $('#modal_window').append(code);
@@ -190,14 +222,6 @@ $(function () {
         //     $('#modal_window').html('');
         // });
     });
-    // $('#drop').on('click', function () {
-    //     API.backendPost('/api/drop/', {}, function (err, data) {
-    //         API.backendPost('/api/init/', {}, function (err, data) {
-    //             if (!err)
-    //                 Map.initialiseMap(data);
-    //         });
-    //     });
-    // });
 });
 },{"./API":1,"./Templates":2,"./welcome.js":4}],4:[function(require,module,exports){
 var API = require('./API');
