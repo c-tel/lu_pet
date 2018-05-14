@@ -12,9 +12,11 @@ $(function () {
             else
                 alert("no data");
         });
-    } else if (window.location.href.indexOf('profile') !== -1) {
-
-     }
+    }
+    $('.menu__item').click(function () {
+        $(".menu__item").removeClass("active");
+        $(this).addClass("active");
+    });
 
     $('#lost').click(function () {
         API.backendPost('/get_advertisements/', {type: 0}, function (err, data) {
