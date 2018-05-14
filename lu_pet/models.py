@@ -71,9 +71,11 @@ class Advertisement(models.Model):
     district = models.CharField(max_length=32)
 
     @staticmethod
-    def ads_info(filters_dict):
+    def ads_info(filters_dict, author=None):
         ads = Advertisement.objects.all()
         ads = ads.filter(**filters_dict).order_by('date_created')
+        if author is not None:
+            ads = ads.filter(author=author)
         res = []
         for ad in list(ads)[::-1]:
             ad_dict = vars(ad)

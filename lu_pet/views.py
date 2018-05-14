@@ -86,6 +86,13 @@ def get_advertisements(request):
 
 
 @csrf_exempt
+def my_advertisements(request):
+    data = json.loads(request.body.decode('utf-8'))
+    resp = Advertisement.ads_info(data, request.user)
+    return JsonResponse(resp, safe=False)
+
+
+@csrf_exempt
 def post_feedback(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
